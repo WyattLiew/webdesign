@@ -1,0 +1,104 @@
+body{
+	margin: 0;
+	padding: 0;
+}
+
+.content-title{
+	text-align: center;
+	font-size: 24px;
+	color:#454;
+	letter-spacing: 1px;
+	font-weight: 600;
+	line-height: 34px;
+	margin-bottom: 10px;
+}
+
+.image_slider-container ul{
+	position: absolute;
+	top: 80%;
+	width: 100%;
+	height:70%;
+	background:#ccc;
+	margin:0;
+	padding: 0;
+}
+
+.image_slider-title{
+	text-align: center;
+	font-size: 32px;
+	color:#777;
+	letter-spacing: -.5px;
+	font-weight: 600;
+	line-height: 34px;
+	margin-bottom: 5px;
+}
+
+.image_slider-title{
+	position: absolute;
+	top: 70%;
+	width: 100%;
+	height:70%;
+}
+
+.image_slider-container ul li{
+	list-style: none;
+	position: relative;
+	width: 20%;
+	height: 100%;
+	border-right: 1px solid #000;
+	float: left;
+	box-sizing: border-box;
+	text-align: center;
+	overflow: hidden;
+}
+
+.image_slider-container ul li:nth-child(1){
+	background: url(assets/images/rawpixel-788527-unsplash-Photo-by-rawpixel-on-Unsplash.jpg);
+	background-size: cover;
+	background-position: left;
+}
+.image_slider-container ul li:nth-child(2){
+	background: url(assets/images/rawpixel-1118407-unsplash-Photo-by-rawpixel-on-Unsplash.jpg);
+	background-size: cover;
+	background-position: left;
+}
+.image_slider-container ul li:nth-child(3){
+	background: url(assets/images/rawpixel-1095818-unsplash-Photo-by-rawpixel-on-Unsplash.jpg);
+	background-size: cover;
+	background-position: left;
+}
+.image_slider-container ul li:nth-child(4){
+	background: url(assets/images/petra-kessler-1075600-unsplash-Photo-by-Petra-Keßler-on-Unsplash.jpg);
+	background-size: cover;
+	background-position: left;
+}
+.image_slider-container ul li:nth-child(5){
+	background: url(assets/images/rawpixel-711102-unsplash-Photo-by-rawpixel-on-Unsplash.jpg);
+	background-size: cover;
+	background-position: left;
+}
+.image_slider-container ul:hover li{
+	width: 10%;
+}
+
+.image_slider-container ul li:hover{
+	width: 60%;
+}
+
+.image_content{
+	position: absolute;
+	bottom: -100%;
+	left: 0;
+	width: 100%;
+	background: rgba(0,0,0,.8);
+	box-sizing: border-box;
+	color: #fff;
+	opacity: 0;
+}
+
+.image_slider-container ul li:hover .image_content{
+	bottom: 0;
+	transition: 0.5s;
+	transition-delay: 0.2s;
+	opacity: 1;
+}
