@@ -2,6 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>What We Do - StepDesign</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/custom.css">
@@ -12,7 +13,9 @@
 	<header>
 	<div class="nav_container">
 	<img class="logo" src="assets/logo.png" alt="logo" height="48" width="fix">			
-		<nav>
+	<a href="javascript:void(0);" class="icon" onclick="navBarFunction()">
+    <i class="fa fa-bars"></i></a>
+		<nav class="topnav" id="menuTopnav">
 			<ul>
 				<li><a href="index.html" id="linkref">Home</a></li>
 				<li><a href="#" id="linkref">Who we are</a></li>
@@ -22,6 +25,17 @@
 		</nav>
 	</div>
 	</header>
+
+	<script>
+		function navBarFunction(){
+			var x = document.getElementById("menuTopnav");
+			if (x.className ==="topnav"){
+				x.className += " responsive";
+			}else{
+				x.className="topnav";
+			}
+		}
+	</script>
 
 	<p class="content-title">NEW HOME CONSTRUCTION AND REMODEL INTERIOR DESIGN SERVICES</p>
 

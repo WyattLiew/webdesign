@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>StepDesign - Home</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css?family=Raleway:300,400" rel="stylesheet">
@@ -10,8 +11,8 @@
 <body>
 	<header>
 	<div class="nav_container">
-	<img class="logo" src="assets/logo.png" alt="logo" height="48" width="fix">			
-		<nav>
+	<img class="logo" src="assets/logo.png" alt="logo" height="48" width="fix">			<a href="javascript:void(0);" class="icon" onclick="navBarFunction()"><i class="fa fa-bars"></i></a>
+		<nav class="topnav" id="menuTopnav">
 			<ul>
 				<li><a href="index.html" id="linkref">Home</a></li>
 				<li><a href="#" id="linkref">Who we are</a></li>
@@ -22,26 +23,17 @@
 	</div>
 	</header>
 
-	<div class="container-homepage reference-view">
-		<h1 class="homepage-content">
-			<span>REVIEW YOUR RENOVATION PROGRESS</span>
-		</h1>
-		<div class="homepage-searchbar">
-			<input class="search-text" type="text" placeholder="Enter your reference id" name="" value="">
-			<a class="search-btn" href="#">
-			<i class="fas fa-search"></i></a>
-		</div>
-	</div>
+	<script>
+		function navBarFunction(){
+			var x = document.getElementById("menuTopnav");
+			if (x.className ==="topnav"){
+				x.className += " responsive";
+			}else{
+				x.className="topnav";
+			}
+		}
+	</script>
 
-	<div class="container-homepage interior-design">
-		<div class="col-hp-1 content-wrapper">
-		<div class="homepage-content">
-			<h2>Interior Design</h2>
-			<h4>isjdalksjdaksj dalskd jasl kd.</h4>
-			<p>adlaskdl;askdla;skdal;sdkas;d</p>
-			<a class="link-button" id="getStarted">Who we are</a>
-		</div>
-	</div>
-</div>
+
 </body>
 </html>

@@ -20,11 +20,13 @@ header::after{
 }
 
 .logo{
-	float: left;
+	display: inline-block;
 	padding-top: 23px;
+	float: left;
 }
 
 nav{
+	display: inline;
 	float: right;
 }
 
@@ -48,11 +50,11 @@ nav ul li a{
 	font-size: 14px;
 }
 
-nav a:hover{
+nav li:hover{
 	color: #752C87;
 }
 
-nav a::before{
+nav li::before{
 	content:'';
 	display: block;
 	height: 3px;
@@ -66,9 +68,59 @@ nav a::before{
 	transition: all ease-in-out 250ms;
 }
 
-nav a:hover::before{
+nav li:hover::before{
 	width: 100%;
 }
+
+.nav_container .icon{
+	display: none;
+
+}
+
+@media screen and (max-width: 768px){
+	nav ul li{
+		display: none;
+	}
+	
+	.nav_container .icon {
+		float: right;
+		display: block;
+		font-size: 2rem;
+		padding-top: 1.2rem;
+		color: #752C87;
+	}
+
+}
+
+@media screen and (max-width: 768px){
+	.topnav.responsive {position: relative;}
+	.topnav.responsive .nav_container .icon{
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+	nav{
+	display: block;
+	width: 80%;
+	float: left;
+	}
+	.topnav.responsive li{
+		float: none;
+		display: block;
+		text-align: center;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
 
 .container-homepage{
 	background-size: 100%;
