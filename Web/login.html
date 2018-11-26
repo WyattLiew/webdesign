@@ -4,14 +4,25 @@
 <head>
 	<meta charset="utf-8">
 	<title>StepDesign Sign In</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Raleway:300,400" rel="stylesheet">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-	<style type="text/css">
-	body{
+<style type="text/css">
+body{
 	margin: 0;
 	padding: 0;
-	font-family: sans-serif;
-	background: url(assets/bg.jpg);
-	background-size: 1250px 800px;
+	
+}
+
+.container{
+	height: 717px;
+	/**background-color: #4f4b4b;*/
+	background: #141E30;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+	background-position: 30%;
 }
 
 .login-box{
@@ -19,7 +30,7 @@
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%,-80%);
+	transform: translate(-50%,-50%);
 	color: white;
 }
 
@@ -69,19 +80,62 @@
 	</style>
 </head>
 <body>
-<div class="login-box">
+	<header>
+	<div class="nav_container">
+	<img class="logo" src="assets/logo.png" alt="logo" height="48" width="fix">			<a href="javascript:void(0);" class="icon" onclick="navBarFunction()"><i class="fa fa-bars"></i></a>
+		<nav class="topnav" id="menuTopnav">
+			<ul>
+				<li><a href="index.html" id="linkref">Home</a></li>
+				<li><a href="#" id="linkref">Who we are</a></li>
+				<li><a href="whatwedo.html" id="linkref">What we do</a></li>
+				<li><a href="contactus.html" id="linkref">Contact us</a></li>
+				<li><i class="fa fa-unlock-alt"></i><a href="login.html" id="linkref"> Login</a></li>
+			</ul>
+		</nav>
+	</div>
+	</header>
+
+	<script>
+		function navBarFunction(){
+			var x = document.getElementById("menuTopnav");
+			if (x.className ==="topnav"){
+				x.className += " responsive";
+			}else{
+				x.className="topnav";
+			}
+		}
+	</script>
+<div class="container">
+<div id="login_div" class="login-box">
 	<h1>Login</h1>
 	<div class="textbox">
 		<i class="fas fa-user"></i>
-		<input type="text" placeholder="Username" name="" value="">
+		<input type="email" placeholder="Username" name="" value="" id="email_field">
 	</div>
 
 	<div class="textbox">
 		<i class="fas fa-lock"></i>
-		<input type="password" placeholder="Password" name="" value="">
+		<input type="password" placeholder="Password" name="" value="" id="password_field">
 	</div>
 
-	<input class="login-button" type="button" name="" value="Sign in">
+	<input class="login-button" type="button" name="" value="Submit" onclick="login()">
 </div>
+</div>
+
+
+<script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyB-rXLOd4NDJgb1zPmi7c6QW4Z7g_plQ4s",
+    authDomain: "mproject-sharedb.firebaseapp.com",
+    databaseURL: "https://mproject-sharedb.firebaseio.com",
+    projectId: "mproject-sharedb",
+    storageBucket: "mproject-sharedb.appspot.com",
+    messagingSenderId: "809141665249"
+  };
+  firebase.initializeApp(config);
+</script>
+<script type="text/javascript" src="js/login.js"></script>
 </body>
 </html>

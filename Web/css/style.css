@@ -22,6 +22,7 @@ header::after{
 .logo{
 	display: inline-block;
 	padding-top: 23px;
+	padding-bottom: 10px;
 	float: left;
 }
 
@@ -70,6 +71,10 @@ nav li::before{
 
 nav li:hover::before{
 	width: 100%;
+}
+
+.fa-unlock-alt{
+	color: #752C87;
 }
 
 .nav_container .icon{
