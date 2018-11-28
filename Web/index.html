@@ -4,14 +4,134 @@
 	<meta charset="utf-8">
 	<title>StepDesign - Home</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css?family=Raleway:300,400" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<style type="text/css">
+		@keyframes content_slider-container{
+
+0%{
+	left: 0%;
+}
+
+20% {
+	left: 0%;
+}
+
+30%{
+	left: -100%;
+}
+
+40% {
+	left: -100%;
+}
+
+50% {
+	left: -200%;
+}
+
+60%{
+	left: -200%;
+}
+
+70% {
+	left:  -100%;
+}
+
+80%{
+	left: -100%;
+}
+
+95%{
+	left: 0%;
+}
+
+}
+
+#content_slider-container{
+	overflow: hidden;
+}
+
+#content_slider-container figure img{
+	width: 20%;
+	float: left;
+	height: 800px;
+}
+
+#content_slider-container figure{
+	position: relative;
+	width: 500%;
+	margin:0;
+	left: 0;
+	text-align: left;
+	font-size: 0;
+	animation: 20s content_slider-container infinite;
+}
+
+.dots-display{
+	position: absolute;
+	top:100%;
+	left: 50%;
+
+}
+.dots{
+	width: 13px;
+	height: 13px;
+	display: inline-block;
+	background: grey;
+	padding: 0px;
+	border: 1px solid #ccc!important;
+	border-radius: 50%;
+	cursor: pointer;
+	background-color: transparent!important;
+}
+
+.centerlize {
+  width: 100;
+  height: 10vh;
+  background-color: #e9ecef;; 
+  color: black;
+  padding: 20px;
+}
+
+.btn-outline-secondary{
+	color: #6c757d;
+    background-color: transparent;
+    background-image: none;
+    border-color: #6c757d;
+}
+
+
+
+.btn-lg{
+	padding: .5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: .3rem;
+}
+
+.jumbotron{
+ display: inline-block;
+ width: 70%;
+}
+
+.jumbotron-btn{
+	display: inline-block;
+	width: 25%;
+}
+</style>
+
 </head>
 <body>
 	<header>
 	<div class="nav_container">
-	<img class="logo" src="assets/logo.png" alt="logo" height="48" width="fix">			<a href="javascript:void(0);" class="icon" onclick="navBarFunction()"><i class="fa fa-bars"></i></a>
+	<img class="logo" src="assets/logo.png" alt="logo" height="48" width="fix">			
+	<a href="javascript:void(0);" class="icon" onclick="navBarFunction()">
+    <i class="fa fa-bars"></i></a>
 		<nav class="topnav" id="menuTopnav">
 			<ul>
 				<li><a href="index.html" id="linkref">Home</a></li>
@@ -34,6 +154,29 @@
 			}
 		}
 	</script>
+
+	<div id="content_slider-container">
+		<figure>
+		<img src="assets/images/works/deborah-cortelazzi-615800-unsplash-Photo-by-deborah-cortelazzi-on-Unsplash.jpg">
+		<img src="assets/images/works/neonbrand-263851-unsplash-Photo-by-NeONBRAND-on-Unsplash.jpg">
+		<img src="assets/images/works/hamed-alishahi-1108451-unsplash-Photo-by-Hamed-Alishahi-on-Unsplash.jpg">
+		</figure>
+	<div class="dots-display" style="text-align: center">
+		<span class="dots"></span>
+		<span class="dots"></span>
+		<span class="dots"></span>
+	</div>
+</div>
+
+<!--- Jumbotron -->
+<div class="centerlize">
+	<div class="jumbotron">
+	<p>Are you planning to renovate or build your dream home?</p>
+	</div>
+	<div class="jumbotron-btn">
+	<a href="#"><button type="button" class="btn btn-outline-secondary btn-lg">Visit us</button></a>
+</div>
+</div>
 
 
 </body>

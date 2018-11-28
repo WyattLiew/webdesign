@@ -1,0 +1,13 @@
+*{
+	box-sizing: border-box;
+	font-family: 'Roboto',sans-serif;
+	outline: none;
+}
+
+.page-title-span{
+	margin-left: 10px;
+}
+
+.button-right-icon {
+	margin-left: 10px;	
+}

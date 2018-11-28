@@ -277,6 +277,12 @@ footer p {
 	margin-bottom: 32px;
 }
 
+#content_slider-container figure img{
+	width: 20%;
+	float: left;
+	height: 100%;
+}
+
 .description-container{
 	background-color: #fbf9fc;
 	height: 200px;
