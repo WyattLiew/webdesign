@@ -7,12 +7,12 @@
 
 
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-	<link href="https://fonts.googleapis.com/css?family=Raleway:300,400" rel="stylesheet">
 
+	<link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway:400,500" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 
 	<style type="text/css">
-		@keyframes content_slider-container{
+@keyframes content_slider-container{
 
 0%{
 	left: 0%;
@@ -72,57 +72,141 @@
 	animation: 20s content_slider-container infinite;
 }
 
-.dots-display{
+.title{
 	position: absolute;
-	top:100%;
+	top: 50%;
 	left: 50%;
-
-}
-.dots{
-	width: 13px;
-	height: 13px;
-	display: inline-block;
-	background: grey;
-	padding: 0px;
-	border: 1px solid #ccc!important;
-	border-radius: 50%;
-	cursor: pointer;
-	background-color: transparent!important;
+	transform: translate(-50%,-50%);
 }
 
-.centerlize {
-  width: 100;
-  height: 10vh;
-  background-color: #e9ecef;; 
-  color: black;
-  padding: 20px;
+.title h1{
+	color: #fff;
+	 font-size: 500%;
+	 text-shadow: 1px 1px 15px #000;
 }
 
-.btn-outline-secondary{
-	color: #6c757d;
-    background-color: transparent;
-    background-image: none;
-    border-color: #6c757d;
+.title-des h3{
+	color: #fff;
+	font-size: 300%;
+  	font-weight: 400;
+  	text-shadow: 1px 1px 10px #000;
+  	padding-bottom: 1rem;
+  	position: absolute;
+	top: 55%;
+	left: 50%;
+	transform: translate(-50%,-50%);
 }
 
+.title-button{
+	position: absolute;
+	margin-top: 25px;
+	top: 65%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
 
-
-.btn-lg{
+.title-btn-lg{
 	padding: .5rem 1rem;
     font-size: 1.25rem;
     line-height: 1.5;
     border-radius: .3rem;
 }
 
-.jumbotron{
- display: inline-block;
- width: 70%;
+.title-btn-1{
+	border: 1px solid #fff;
+	padding: 10px 30px;
+	color: #fff;
+	text-decoration: none;
+	font-weight: 600;
 }
 
-.jumbotron-btn{
-	display: inline-block;
-	width: 25%;
+.title-btn-2{
+	border: 1px solid #fff;
+	padding: 10px 30px;
+	color: #fff;
+	text-decoration: none;
+	background-color: #6648b1;
+  border:1px solid #6648b1;
+  font-weight: 600;
 }
+
+.title-btn-1:hover{
+	background-color: #fff;
+	color: black;
+  border:1px solid #fff;
+}
+
+.title-btn-2:hover {
+  background-color: #563d7c;
+  border:1px solid #563d7c;
+}
+
+.services{
+	background: #f1f1f1;
+	text-align: center;
+}
+
+.services h1{
+	display: inline-block;
+	text-transform: uppercase;
+	border-bottom: 4px solid #6648b1;
+	font-size: 20px;
+	padding-bottom: 10px;
+	margin-top: 40px;
+}
+
+.cen{
+	max-width: 1200px;
+	margin: auto;
+	overflow: hidden;
+	padding:20px;
+}
+
+.service{
+	display: inline-block;
+	width: calc(100%/3);
+	margin: 0 -2px;
+	padding: 20px;
+	box-sizing: border-box;
+	cursor: pointer;
+	transition: 0.4s;
+}
+
+.service:hover{
+	background: #ddd;
+}
+
+.service i{
+	color: #6648b1;
+	font-size: 34px;
+	margin-bottom: 30px;
+}
+
+.service h2{
+	font-size: 18px;
+	text-transform: uppercase;
+	font-weight: 500;
+	margin: 0;
+}
+
+.service p{
+	color: gray;
+	font-size: 15px;
+	font-weight: 500;
+}
+
+@media screen and (max-width: 900px){
+	.service{
+		width: 50%;
+	}
+}
+
+@media screen and (max-width: 500px){
+	.service{
+		width: 100%;
+	}
+}
+
 </style>
 
 </head>
@@ -161,22 +245,60 @@
 		<img src="assets/images/works/neonbrand-263851-unsplash-Photo-by-NeONBRAND-on-Unsplash.jpg">
 		<img src="assets/images/works/hamed-alishahi-1108451-unsplash-Photo-by-Hamed-Alishahi-on-Unsplash.jpg">
 		</figure>
-	<div class="dots-display" style="text-align: center">
-		<span class="dots"></span>
-		<span class="dots"></span>
-		<span class="dots"></span>
+		<div class="title">
+			<h1>INTERIOR DESIGN</h1>
+		</div>
+		<div class="title-des">
+			<h3>From Concept To Reality</h3>
+		</div>
+		<div class="title-button">
+			<a href="#" class="title-btn-1 title-btn-lg">View Project</a>
+			<a href="contactus.html" class="title-btn-2 title-btn-lg">Contact us</a>
+		</div>
+</div>
+
+<!--- Welcome Section -->
+<div class="services">
+	<h1>Our Services</h1>
+	<div class="cen">
+		<div class="service">
+			<i class="fas fa-home"></i>
+			<h2>Residential</h2>
+			<p>Say something here ..................................</p>
+		</div>
+
+		<div class="service">
+			<i class="fas fa-city"></i>
+			<h2>Offices</h2>
+			<p>Say something here ..................................</p>
+		</div>
+
+		<div class="service">
+			<i class="far fa-building"></i>
+			<h2>Retails</h2>
+			<p>Say something here ..................................</p>
+		</div>
+
+		<div class="service">
+			<i class="fas fa-pencil-alt"></i>
+			<h2>Design Concept</h2>
+			<p>Say something here ..................................</p>
+		</div>
+
+		<div class="service">
+			<i class="fas fa-drafting-compass"></i>
+			<h2>Space Planning</h2>
+			<p>Say something here ..................................</p>
+		</div>
+
+		<div class="service">
+			<i class="fas fa-grip-horizontal"></i>
+			<h2>Other needs not named here</h2>
+			<p>Say something here ..................................</p>
+		</div>
 	</div>
 </div>
 
-<!--- Jumbotron -->
-<div class="centerlize">
-	<div class="jumbotron">
-	<p>Are you planning to renovate or build your dream home?</p>
-	</div>
-	<div class="jumbotron-btn">
-	<a href="#"><button type="button" class="btn btn-outline-secondary btn-lg">Visit us</button></a>
-</div>
-</div>
 
 
 </body>
