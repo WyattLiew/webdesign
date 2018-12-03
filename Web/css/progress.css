@@ -11,3 +11,23 @@
 .button-right-icon {
 	margin-left: 10px;	
 }
+
+.search-container{
+	display: block;
+	position: relative;
+   left: 40%;
+}
+
+.contentImage{
+	width: 100%;
+	height: auto;
+	cursor: pointer;
+}
+
+.col-lg-4{
+	display: inline-block;
+	max-width: 33.333333%;
+	padding: 2px;
+}
+
+
