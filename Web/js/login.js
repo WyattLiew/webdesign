@@ -1,3 +1,6 @@
+ var submitBtn = document.getElementById("referenceSubmitBtn");
+  var submitProgress = document.getElementById("submitProgress");
+
 /*Login progress*/
 
 firebase.auth().onAuthStateChanged(function(user){
@@ -89,20 +92,28 @@ function signOutBtn(){
 
 })(window);
 
-// reference ID part 1
+
+
+/*
+ Home page reference ID part 1 
+*/
 
 function refSubmitclick() {
   var referenceID = document.getElementById("referenceIdText").value;
+
   if (referenceID !="") {
+    submitBtn.style.display="none"
     queryDatabase(referenceID);
   }else{
     alert("Please enter your reference id");
+     submitBtn.style.display="inline-block"
   }
 }
 
 function queryDatabase(referenceID){
   firebase.database().ref('/Defect Add On/' + referenceID).once('value').then(function(snapshot){
     var defectObject = snapshot.val();
+    var imgArray = [];
     console.log(defectObject);
     var keys = Object.keys(defectObject);
     for (var i = 0; i < keys.length; i++){
@@ -118,7 +129,17 @@ function queryDatabase(referenceID){
       col.classList.add("col-lg-4");
       var image = document.createElement("img");
       image.src = currentObject.imgURL;
+      image.id  = currentObject.id;
       image.classList.add("contentImage");
+     
+      imgArray.push(currentObject.id);
+      console.log(imgArray);
+
+      image.onclick = function(){
+        console.log(image.id);
+      }
+
+    
       var date = document.createElement("p");
       var node = document.createTextNode("Date: " + currentObject.date);
       date.appendChild(node);
@@ -128,16 +149,21 @@ function queryDatabase(referenceID){
       var comment = document.createElement("p");
       var node2 = document.createTextNode("Comment: " + currentObject.comments);
       comment.appendChild(node2);
-      col.append(image);
-      col.append(date);
-      col.append(defect);
-      col.append(comment);
+      col.appendChild(image);
+      col.appendChild(date);
+      col.appendChild(defect);
+      col.appendChild(comment);
       currentRow.append(col);
-      image.onclick = function(){ console.log(currentObject.id)}
       }
+      for (var i =0; i < document.images.length; i++){
+        document.images[i].id = imgArray[i];
+        console.log(document.images[i].id);
+      }
+      submitBtn.style.display="inline-block"
   }).catch(function(error){
     var errorCode = error.code;
     var errorMessage = error.message;
     window.alert("Error : Please check your reference ID, it's case sensitive.");
+     submitBtn.style.display="inline-block"
   });
 }

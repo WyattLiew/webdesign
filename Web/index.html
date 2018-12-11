@@ -85,24 +85,24 @@
 	 text-shadow: 1px 1px 15px #000;
 }
 
-.title-des h3{
+.title h3{
 	color: #fff;
 	font-size: 300%;
   	font-weight: 400;
+  	width: 100%;
   	text-shadow: 1px 1px 10px #000;
   	padding-bottom: 1rem;
   	position: absolute;
 	top: 55%;
 	left: 50%;
-	transform: translate(-50%,-50%);
+	text-align: center;
+	transform: translate(-50%,-20%);
 }
 
 .title-button{
 	position: absolute;
-	margin-top: 25px;
-	top: 65%;
-	left: 50%;
-	transform: translate(-50%,-50%);
+	margin-top: 35px;
+	transform: translate(50%,50%);
 }
 
 .title-btn-lg{
@@ -207,6 +207,34 @@
 	}
 }
 
+@media screen and (max-width: 768px){
+
+	#content_slider-container figure img{
+	height: 300px;
+	margin-top: 16px;
+	}
+	
+	.title{
+		position: relative;
+	}
+	.title h1{
+		font-size: xx-large;
+		text-align: center;
+	}
+	.title h3{
+		position: relative;
+		font-size: 110%;
+		padding-bottom: 0;
+	}
+
+	.title-button{
+		position: relative;
+		text-align: center;
+		transform: none;
+		margin-top: none;
+	}
+}
+
 </style>
 
 </head>
@@ -247,14 +275,13 @@
 		</figure>
 		<div class="title">
 			<h1>INTERIOR DESIGN</h1>
-		</div>
-		<div class="title-des">
 			<h3>From Concept To Reality</h3>
-		</div>
-		<div class="title-button">
+			<div class="title-button">
 			<a href="#" class="title-btn-1 title-btn-lg">View Project</a>
 			<a href="contactus.html" class="title-btn-2 title-btn-lg">Contact us</a>
 		</div>
+		</div>
+		
 </div>
 
 <!--- Welcome Section -->

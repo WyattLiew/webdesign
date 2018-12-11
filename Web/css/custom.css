@@ -262,9 +262,7 @@ footer p {
 }
 
 /*---Media Queries --*/
-@media (max-width: 768px) {
-
-
+@media (max-width: 812px) {
 
 .content-title{
 	text-align: center;
@@ -328,23 +326,27 @@ footer p {
 }
 
 .contact-form{
-	width: 85%;
+	width: 100%;
 	max-width: 600px;
 	background: #f1f1f1;
-	position: absolute;
+	position: relative;
 	margin-bottom: 20px;
-	top: 285%;
-	left: 50%;
 	padding: 30px 40px;
 	box-sizing: border-box;
 	border-radius: 8px;
 	text-align: center;
 	box-shadow: 0 0 20px #000000b3;
+	transform: translate(-50%,0%);
+	margin-top: 160%;
 	font-family: "Montserrat",sans-serif;
 }
 
+.contact-form h1{
+	font-size: x-large;
+}
+
 footer{
-	position: absolute;
+	position: relative;
 	top: 280%;
 	background-color: #424558;
 	width: 100%;
@@ -354,3 +356,23 @@ footer{
     clear: both;
 }
 }
+
+@media (height: 375px) {
+	.contact-form{
+	margin-top: 50%;
+}
+}
+
+@media (height: 414px) {
+	.contact-form{
+	margin-top: 60%;
+}
+}
+
+@media (height: 812px) {
+	.contact-form{
+	margin-top: 190%;
+}
+}
+
+

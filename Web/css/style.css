@@ -82,7 +82,7 @@ nav li:hover::before{
 
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 812px){
 	nav ul li{
 		display: none;
 	}
@@ -97,7 +97,7 @@ nav li:hover::before{
 
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 812px){
 	.topnav.responsive {position: relative;}
 	.topnav.responsive .nav_container .icon{
 		position: absolute;
@@ -116,121 +116,13 @@ nav li:hover::before{
 	}
 }
 
-
-
-
-
-
-
-
-
-
-
-
-.container-homepage{
-	background-size: 100%;
-	background-repeat: no-repeat;
-	height: 600px;
-	position: relative;
-	font-family: 'Raleway', sans-serif;
-}
-.reference-view{
-background-image: url(../assets/bench-accounting-49909-unsplash-Photo-by-Bench-Accounting-on-Unsplash.jpg);
-background-position: 60%;
+@media screen and (width: 1024px){
+	.nav_container{
+		width: 90%;
+	}
 }
 
-.homepage-content{
-	text-align: center;
-	padding: 90px 0 0 0;
-	font-size: 36px;
-	line-height: 40px;
-	color: #777;
-	letter-spacing:2.4px;
-	font-weight: lighter;
-}
 
-.homepage-searchbar{
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%,-50%);
-	background-color: rgba(255, 255, 255, .9);
-	height: 50px;
-	border-radius: 40px;
-	padding: 10px;
-}
-
-.search-btn{
-	color: #4caf50;
-	float: right;
-	width: 50px;
-	height: 50px;
-	border-radius: 50%;
-	background: rgba(255, 255, 255, .9);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.search-text{
-	border: none;
-	background: none;
-	outline: none;
-	float: left;
-	padding: 6px 0px 0px 15px;
-	color: #777;
-	font-size: 16px;
-	transition: 0.4s;
-	line-height: 40px;
-	width: 360px;
-}
-
-.interior-design{
-	background-image: url(../assets/leone-venter-559377-unsplash-Photo-by-Leone-Venter-on-Unsplash.jpg);
-	background-position: 30%;
-}
-
-.homepage-content h2{
-    font-size: 3.67rem;
-    text-transform: capitalize;
-    color: #337a60;
-    margin-bottom: 20px;
-    line-height: normal;
-    font-weight: 300;
-}
-
-.homepage-content h4{
-	font-size: 1.433rem;
-    line-height: normal;
-    margin-bottom: 19px;
-}
-
-.homepage-content p{
-	font-size: 1rem;
-    color: #999;
-    line-height: normal;
-    margin-bottom: 22px;
-}
-
-.link-button{
-	height: 46px;
-    line-height: 45px;
-    padding: 0 35px;
-    border-radius: 30px;
-    background-color: #fff;
-    text-align: center;
-    cursor: pointer;
-    display: inline-block;
-    color: #4caf50;
-    box-shadow: 0px 0px 15px 4px rgba(0, 0, 0, 0.1);
-    transition: all ease-in-out 250ms;
-    transition-delay: 0s;
-    font-size: 16px;
-}
-
-.link-button:hover{
-	background-color: #d2f7d9;
-}
 
 
 /** Contact us **/
@@ -300,4 +192,14 @@ background-position: 60%;
 	font-weight: 600;
 	line-height: 1.5;
 	font-size: 1.125em;
+}
+
+@media screen and (max-width: 768px){
+
+	.vc_col-sm-4{
+		width: 100%;
+}
+.vc_col-sm-4{
+	float: none;
+}
 }
