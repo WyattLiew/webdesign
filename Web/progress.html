@@ -41,7 +41,30 @@
 
  <!-- Textfield with Floating Label -->
 
-<form action="#" class="search-container">
+<div id="progressHeader">
+  <h3>Progress List</h3>
+    <!-- Mini FAB button -->
+<button onclick="location.reload()" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--accent">
+ <i class="material-icons">cancel</i>
+</button>
+</div>
+
+<div id="defectsHeader">
+  <h3>Defect List</h3>
+      <!-- Mini FAB button -->
+<button onclick="location.reload()" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--accent">
+ <i class="material-icons">cancel</i>
+</button>
+</div>
+
+ <div id="tracking-form" class="tracking-form">
+  <h1>Tracking System</h1>
+  <p>Select only one option from the list.<br> Enter the reference ID below to track your progress/defects.</p>
+  <form class="tracking-list">
+   <input type="radio" name="tracking-list" value="progress" id="progress" checked> Progress<br>
+  <input type="radio" name="tracking-list" value="defects" id="defects"> Defects<br>
+</form>
+   <form action="#" class="search-container">
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
     <input id="referenceIdText" class="mdl-textfield__input" type="text">
     <label class="mdl-textfield__label" for="sample3">Reference ID</label>
@@ -50,10 +73,12 @@
 <button id="referenceSubmitBtn" onclick="refSubmitclick()" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--accent">
  <i class="material-icons">search</i>
 </button>
+<div id="submitProgress" class="mdl-spinner mdl-js-spinner is-active"></div>
 </form>
+</div>
 
 <div id="contentHolder">
- 
+  
 </div>
     </div>
   </main>
