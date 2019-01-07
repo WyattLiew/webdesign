@@ -82,7 +82,7 @@ nav li:hover::before{
 
 }
 
-@media screen and (max-width: 812px){
+@media screen and (max-width: 1113px){
 	nav ul li{
 		display: none;
 	}
@@ -97,7 +97,7 @@ nav li:hover::before{
 
 }
 
-@media screen and (max-width: 812px){
+@media screen and (max-width: 1113px){
 	.topnav.responsive {position: relative;}
 	.topnav.responsive .nav_container .icon{
 		position: absolute;
@@ -116,7 +116,7 @@ nav li:hover::before{
 	}
 }
 
-@media screen and (width: 1024px){
+@media screen and (width: 1115px){
 	.nav_container{
 		width: 90%;
 	}

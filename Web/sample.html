@@ -10,20 +10,20 @@
 	<!-- Main Stylesheet -->
 	<link rel="stylesheet" type="text/css" href="css/progress.css">
 </head>
-<body>
+<body onload="queryDefectsDatabase(queryString)">
 
 	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-  	<header class="mdl-layout__header">
+    <header class="mdl-layout__header">
     <div class="mdl-layout-icon"></div>
     <div class="mdl-layout__header-row">
       <span class="mdl-layout__title">Step Design
-      	<span class="page-title-span"> | </span>
-      	<span class="page-title-span"> Home </span>
+        <span class="page-title-span"> | </span>
+        <span class="page-title-span"> Sample </span>
       </span>
       <div class="mdl-layout-spacer"></div>
       <nav class="mdl-navigation">
        <!-- Colored raised button -->
-		<button id="signOutBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" onclick="signOutBtn()">Sign Out<i class="button-right-icon material-icons">account_circle</i></button>
+    <button id="signOutBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" onclick="signOutBtn()">Sign Out<i class="button-right-icon material-icons">account_circle</i></button>
       </nav>
     </div>
   </header>
@@ -65,25 +65,8 @@
 </button>
 </div>
 
- <div id="tracking-form" class="tracking-form">
-  <h1>Tracking System</h1>
-  <p>Select only one option from the list.<br> Enter the reference ID below to track your progress/defects.</p>
-  <form class="tracking-list">
-   <input type="radio" name="tracking-list" value="progress" id="progress" checked> Progress<br>
-  <input type="radio" name="tracking-list" value="defects" id="defects"> Defects<br>
-</form>
-   <form action="#" class="search-container">
-  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <input id="referenceIdText" class="mdl-textfield__input" type="text">
-    <label class="mdl-textfield__label" for="sample3">Reference ID</label>
-  </div>
-  <!-- Mini FAB button -->
-<button id="referenceSubmitBtn" onclick="refSubmitclick()" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--accent">
- <i class="material-icons">search</i>
-</button>
-<div id="submitProgress" class="mdl-spinner mdl-js-spinner is-active"></div>
-</form>
-</div>
+ 
+ 
 
 <div id="contentHolder">
   
@@ -97,12 +80,7 @@
   </main>
 </div>
 
-<!-- Passing variable to another html page -->
-<script type="text/javascript">
-  //var value1 = "-LQHU8Fttc36WGNZ500w";
-  //var queryString = "?para=" + value1;
-  //window.location.href = "sample.html" + queryString;
-</script>
+
 
 <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
 <script>
@@ -117,6 +95,20 @@
   };
   firebase.initializeApp(config);
 </script>
+
+<script type="text/javascript">
+  var queryString = decodeURIComponent(window.location.search);
+  queryString = queryString.substring(6);
+  var queries = queryString.split("?");
+  //for (var i = 0; i < queries.length; i++)
+//{
+  //myVar2 = queries[i];
+//}
+console.log(queryString);
+//console.log(myVar2);
+</script>
+
+
 <script type="text/javascript" src="js/login.js"></script>
 </body>
 </html>

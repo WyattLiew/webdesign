@@ -77,6 +77,7 @@
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%,-50%);
+	width: fit-content;
 }
 
 .title h1{
@@ -207,7 +208,7 @@
 	}
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 812px){
 
 	#content_slider-container figure img{
 	height: 300px;
@@ -234,6 +235,21 @@
 		margin-top: none;
 	}
 }
+@media screen and (width: 1024px){
+	
+	.title{
+		width: fit-content;
+	}
+}
+
+@media screen and (height: 1366px){
+	
+	.title{
+		transform: translate(-50%,-170%);
+	}
+}
+
+
 
 footer{
 	background-color: #424558;

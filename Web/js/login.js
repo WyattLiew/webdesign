@@ -2,6 +2,13 @@ var submitBtn = document.getElementById("referenceSubmitBtn");
 var submitProgress = document.getElementById("submitProgress");
 var trackingForm = document.getElementById("tracking-form");
 var defectsHeader = document.getElementById("defectsHeader");
+var progressHeader = document.getElementById("progressHeader");
+var ImageHr = document.getElementById("ImageLineBorder");
+/* Show more images var */
+var MoreImgElement = document.getElementById("detailsHolder");
+var MoreImgCol;
+var Moreimage;
+var currentRow;
 
 
 /*Login progress*/
@@ -31,7 +38,10 @@ function login() {
 		loginButton.style.display="none"
 	
 	firebase.auth().signInWithEmailAndPassword(userEmail, userPass).then(function(){
-		document.location.href = "progress.html";
+    // Users UID
+    let currentUser = firebase.auth().currentUser.uid;
+    // check authority
+    checkAdmin(currentUser);
 	}).catch(function(error) {
   	// Handle Errors here.
   	var errorCode = error.code;
@@ -41,7 +51,6 @@ function login() {
     // ...
     	loginProgress.style.display="none"
 		  loginButton.style.display="block"
-	
 	});
 }else{
   alert("Please fill in the blank.")
@@ -62,6 +71,26 @@ function signOutBtn(){
 });
 }
 
+function checkAdmin(currentUser){
+  firebase.database().ref('/Users/' + currentUser).once('value').then(function(snapshot){
+    var usersObject = snapshot.val();
+    
+    var isAdmin = snapshot.child("isAdmin").val();
+
+    if(isAdmin == true){
+      document.location.href = "progress.html";
+    }else{
+      document.location.href = "clientPage.html";
+    }
+}).catch(function(error){
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    window.alert("Error : " + errorMessage);
+  });
+}
+
+
+/*
 (function (global) { 
 
     if(typeof (global) === "undefined") {
@@ -95,6 +124,7 @@ function signOutBtn(){
 
 })(window);
 
+*/
 
 
 /*
@@ -109,10 +139,12 @@ function refSubmitclick() {
   if (referenceID !="" && progress == true) {
     submitBtn.style.display="none";
     submitProgress.style.display="inline-block";
-    //queryDatabase(referenceID);
+    ImageHr.style.display='block';
+    queryProgressDatabase(referenceID);
   }else if (referenceID !="" && defects ==true) {
     submitBtn.style.display="none";
     submitProgress.style.display="inline-block";
+    ImageHr.style.display='block';
     queryDefectsDatabase(referenceID);
   }else{
     alert("Please check your reference id");
@@ -120,11 +152,12 @@ function refSubmitclick() {
   }
 }
 
+/* Defect details   */
 function queryDefectsDatabase(referenceID){
   firebase.database().ref('/Defect Add On/' + referenceID).once('value').then(function(snapshot){
     var defectObject = snapshot.val();
     //var imgArray = [];
-
+   
     trackingForm.style.display="none";
     var keys = Object.keys(defectObject);
     for (var i = 0; i < keys.length; i++){
@@ -188,14 +221,61 @@ function queryDefectsDatabase(referenceID){
     var errorMessage = error.message;
     window.alert("Error : Please check your reference ID, it's case sensitive.");
      submitBtn.style.display="inline-block";
+     submitProgress.style.display="none";
+     ImageHr.style.display='none';
+     trackingForm.style.display="block";
   });
 }
 
+/* Defect Image show more when clicked */
 function selectImages(id){
   firebase.database().ref('/Defect add on image/' + id).once('value').then(function(snapshot){
     var defectObject = snapshot.val();
-    var imgArray = [];
-    console.log(id);
+    var keys = Object.keys(defectObject);
+
+    // Hide images function //
+    removeElement();
+    // Show images //
+    for (var i = 0; i < keys.length; i++){
+      var currentObject = defectObject[keys[i]];
+      
+      if(i % 3 == 0){
+          MoreImgCurrentRow = document.createElement("div");
+          MoreImgCurrentRow.classList.add("row");
+          MoreImgElement.append(MoreImgCurrentRow);
+      }
+      
+      MoreImgCol = document.createElement("div");
+      MoreImgCol.classList.add("col-lg-4");
+      Moreimage = document.createElement("img");
+      Moreimage.src = currentObject.imgURL;
+      Moreimage.id  = currentObject.id;
+      Moreimage.classList.add("contentImage");
+
+      MoreImgCol.appendChild(Moreimage);
+      MoreImgCurrentRow.append(MoreImgCol);
+    }
+}).catch(function(error){
+    var errorCode = error.code;
+    var errorMessage = error.message;
+  });
+}
+
+// Hide images //
+function removeElement(){
+    while(MoreImgElement.hasChildNodes()){
+    MoreImgElement.removeChild(MoreImgElement.firstChild);
+  }
+}
+
+
+
+// Progress Add on //
+function queryProgressDatabase(referenceID){
+  firebase.database().ref('/Projects Add On/' + referenceID).once('value').then(function(snapshot){
+    var defectObject = snapshot.val();
+
+    trackingForm.style.display="none";
     var keys = Object.keys(defectObject);
     for (var i = 0; i < keys.length; i++){
       var currentObject = defectObject[keys[i]];
@@ -209,13 +289,57 @@ function selectImages(id){
       
       var col = document.createElement("div");
       col.classList.add("col-lg-4");
-      var image = document.createElement("img");
-      image.src = currentObject.imgURL;
-      image.id  = currentObject.id;
-      image.classList.add("contentImage");
+      
+      var imageID = currentObject.id;
+      element.innerHTML+= '<div class="col-lg-4">' +
+                          '<img src="'+currentObject.imgURL+'"class="contentImage"">' +
+                          '<p>' + 'Date: ' + currentObject.date + '</p>' +
+                          '<p>' + 'Status: ' + currentObject.status + '</p>' +
+                          '<p>' + 'Comment: ' + currentObject.notes + '</p>' +
+                          '<a href="#" onclick="selectProgressImages(\''+imageID+'\')" class="mdl-button mdl-js-button">See more</a>';
+    
+      submitBtn.style.display="inline-block";
+      progressHeader.style.display="flex";
+    }
+  }).catch(function(error){
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    window.alert("Error : Please check your reference ID, it's case sensitive.");
+    submitBtn.style.display="inline-block";
+    submitProgress.style.display="none";
+     ImageHr.style.display='none';
+     trackingForm.style.display="block";
+  });
+}
 
-      col.appendChild(image);
-      currentRow.append(col);
+
+/* Progress Image show more when clicked */
+function selectProgressImages(id){
+  firebase.database().ref('/Project add on image/' + id).once('value').then(function(snapshot){
+    var defectObject = snapshot.val();
+    var keys = Object.keys(defectObject);
+
+    // Hide images function //
+    removeElement();
+    // Show images //
+    for (var i = 0; i < keys.length; i++){
+      var currentObject = defectObject[keys[i]];
+      
+      if(i % 3 == 0){
+          MoreImgCurrentRow = document.createElement("div");
+          MoreImgCurrentRow.classList.add("row");
+          MoreImgElement.append(MoreImgCurrentRow);
+      }
+      
+      MoreImgCol = document.createElement("div");
+      MoreImgCol.classList.add("col-lg-4");
+      Moreimage = document.createElement("img");
+      Moreimage.src = currentObject.imgURL;
+      Moreimage.id  = currentObject.id;
+      Moreimage.classList.add("contentImage");
+
+      MoreImgCol.appendChild(Moreimage);
+      MoreImgCurrentRow.append(MoreImgCol);
     }
 }).catch(function(error){
     var errorCode = error.code;
