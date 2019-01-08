@@ -16,6 +16,8 @@ var currentRow;
 firebase.auth().onAuthStateChanged(function(user){
 	if (user) {
 		//user is signed in
+    let currentUser = firebase.auth().currentUser.uid;
+    retrieveData(currentUser);
 		//document.getElementById("user_div").style.display = "block";
 		//document.getElementById("login_div").style.display = "none";
 		//document.location.href = "progress.html";
@@ -76,12 +78,26 @@ function checkAdmin(currentUser){
     var usersObject = snapshot.val();
     
     var isAdmin = snapshot.child("isAdmin").val();
-
     if(isAdmin == true){
       document.location.href = "progress.html";
     }else{
       document.location.href = "clientPage.html";
     }
+}).catch(function(error){
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    window.alert("Error : " + errorMessage);
+  });
+}
+
+function retrieveData(currentUser){
+  firebase.database().ref('/Users/' + currentUser).once('value').then(function(snapshot){
+    var usersObject = snapshot.val();
+    
+    var userName = snapshot.child("name").val();
+
+    setTimeout(() =>  document.getElementById("title-name").textContent = userName , 3000);
+    
 }).catch(function(error){
     var errorCode = error.code;
     var errorMessage = error.message;
@@ -346,3 +362,4 @@ function selectProgressImages(id){
     var errorMessage = error.message;
   });
 }
+
