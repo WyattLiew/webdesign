@@ -79,9 +79,9 @@ function checkAdmin(currentUser){
     
     var isAdmin = snapshot.child("isAdmin").val();
     if(isAdmin == true){
-      document.location.href = "progress.html";
+      document.location.href = "projectList.html";
     }else{
-      document.location.href = "clientPage.html";
+      document.location.href = "progress.html";
     }
 }).catch(function(error){
     var errorCode = error.code;
@@ -96,7 +96,7 @@ function retrieveData(currentUser){
     
     var userName = snapshot.child("name").val();
 
-    setTimeout(() =>  document.getElementById("title-name").textContent = userName , 3000);
+    setTimeout(() =>  document.getElementById("title-name").textContent = "Hi, " + userName , 3000);
     
 }).catch(function(error){
     var errorCode = error.code;

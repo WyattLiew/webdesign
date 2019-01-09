@@ -48,6 +48,9 @@
 	margin: 16px;
 }
 
+#projForm{
+	display: none;
+}
 
 /*tracking form*/
 

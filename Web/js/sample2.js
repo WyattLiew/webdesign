@@ -107,14 +107,21 @@ function fetchProjects(UID){
       
     projectList.innerHTML +='<div class="well">'+
 								'<h6>Project ID: ' + currentObject.id + '</h6>' +
+								'<form>' +
 								'<h3>' + currentObject.title + '</h3>'+
-								'<h5>' + "Description: " +currentObject.description + '</h5>'+
-								'<p><span class="glyphicon glyphicon-time"</span>' + " "+currentObject.date + '</p>' +
-								'<p><span class="glyphicon glyphicon-user"</span>' + " " +currentObject.name + '</p>'+
-								'<p><span class="glyphicon glyphicon-earphone"</span>' + " "+currentObject.number + '</p>'+
-								'<p><span class="glyphicon glyphicon-envelope"</span>' + " "+ currentObject.email + '</p>'+
-								'<p><span class="glyphicon glyphicon-flag"</span>' + " " +currentObject.location + '</p>'+
-								'<p><span class="glyphicon glyphicon-info-sign"</span>' + " " + currentObject.notes + '</p>'+
+								'<h5>' + "Description: " + '<input value="'+currentObject.description+'" style="border:none;outline:none;background:none;" readonly>' + '</h5>'+
+								'<span class="glyphicon glyphicon-time col-md-6">' +" "+ '<input value="'+currentObject.date+'" style="border:none;outline:none;background:none;" readonly>' + '</span>' +
+								'<br></br>' +
+								'<span class="glyphicon glyphicon-user col-md-6 ">'+ " " +'<input value="'+currentObject.name+'" style="border:none;outline:none;background:none;" readonly>' + '</span>' +
+								'<br></br>' +
+								'<span class="glyphicon glyphicon-earphone col-md-6">' + " " +'<input value="'+currentObject.number+'" style="border:none;outline:none;background:none;" readonly>' + ' </span>'+
+								'<br></br>' +
+								'<span class="glyphicon glyphicon-envelope col-md-6">' + " " +'<input value="'+currentObject.email+'" style="border:none;outline:none;background:none" readonly>' + "</span>" +
+								'<br></br>' +
+								'<span class="glyphicon glyphicon-flag col-md-6">' + " " +'<input value="'+currentObject.location+'" style="border:none;outline:none;background:none;" readonly>' + '</span>' +
+								'<br></br>' +
+								'<span class="glyphicon glyphicon-info-sign col-md-6">' + " " +'<input value="'+currentObject.notes+'" style="border:none;outline:none;background:none;" readonly>' + '</span>' +
+								'<br></br>' +
 								'<a href="#" onclick="setStatusClosed(\''+currentObject.id+'\')" class="btn btn-success">Enter</a>' + " " + 
 								'<div class="btn-group">' +
 								'<button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action<span class="caret"></span></button>' +
@@ -124,6 +131,7 @@ function fetchProjects(UID){
 							    '<li><a href="#" onclick="deleteProject(\''+currentObject.id+'\')" >Delete</a></li>' +
 							  	'</ul>'+
 							  	'</div>' +
+							  	'</form> '+
 								'</div>';
     }
   }).catch(function(error){
