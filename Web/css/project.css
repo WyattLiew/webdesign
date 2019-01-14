@@ -1,0 +1,35 @@
+input {
+	border:none;
+	outline:none;
+	background:none;
+}
+.invert input{
+	border:0.1px solid rgba(0,0,0,2);
+	outline: none;
+	background: white;
+	padding:6px;
+	max-width: 100%;
+}
+
+a:nth-of-type(1) {
+	display: inline-block;
+}
+a:nth-of-type(2) {
+	display: none;
+}
+a:nth-of-type(3) {
+	display: none;
+}
+
+.invert>a:nth-of-type(1){
+	display: none;
+}
+.invert>a:nth-of-type(2){
+	display: inline-block;
+}
+.invert>a:nth-of-type(3){
+	display: inline-block;
+}
+.invert >div:nth-of-type(1){
+	display: none;
+}

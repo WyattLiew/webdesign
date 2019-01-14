@@ -90,6 +90,8 @@ function saveProject(e){
 				projAddBtn.style.display="inline-block";
 			}
 		});
+		// save client details to firebase
+		newClientRef.child(clientId).set(client);
 	} 
 }
 
@@ -104,24 +106,42 @@ function fetchProjects(UID){
     for (var i = 0; i < keys.length; i++){
 
       var currentObject = projectObject[keys[i]];
-      
-    projectList.innerHTML +='<div class="well">'+
+      var projectID = currentObject.id;
+      var clientId = currentObject.clientID;
+      var projectTitleEdit = projectID+currentObject.title;
+      var projectDescEdit = projectID+currentObject.description+"1";
+      var projectCliNameEdit = projectID+currentObject.name;
+      var projectCliNumEdit = projectID+currentObject.number;
+      var projectCliEmailEdit = projectID+currentObject.email;
+      var projectLocationEdit = projectID+currentObject.location;
+      var projectDateEdit = projectID+currentObject.date;
+      var projectNotesEdit = projectID+currentObject.notes+"1";
+
+    projectList.innerHTML +='<div class="well" id="\''+projectID+'\'">'+
 								'<h6>Project ID: ' + currentObject.id + '</h6>' +
-								'<h3>' + currentObject.title + '</h3>'+
-								'<h5>' + "Description: " +currentObject.description + '</h5>'+
-								'<p><span class="glyphicon glyphicon-time"</span>' + " "+currentObject.date + '</p>' +
-								'<p><span class="glyphicon glyphicon-user"</span>' + " " +currentObject.name + '</p>'+
-								'<p><span class="glyphicon glyphicon-earphone"</span>' + " "+currentObject.number + '</p>'+
-								'<p><span class="glyphicon glyphicon-envelope"</span>' + " "+ currentObject.email + '</p>'+
-								'<p><span class="glyphicon glyphicon-flag"</span>' + " " +currentObject.location + '</p>'+
-								'<p><span class="glyphicon glyphicon-info-sign"</span>' + " " + currentObject.notes + '</p>'+
-								'<a href="#" onclick="setStatusClosed(\''+currentObject.id+'\')" class="btn btn-success">Enter</a>' + " " + 
-								'<div class="btn-group">' +
+								'<h3>' + '<input id="\''+projectTitleEdit+'\'" value="'+currentObject.title+'" readonly required>' + '</h3>'+
+								'<h5>' + "Description: " + '<input id="\''+projectDescEdit+'\'" value="'+currentObject.description+'"  readonly>' + '</h5>'+
+								'<span class="glyphicon glyphicon-time col-md-6">' +" "+ '<input id="\''+projectDateEdit+'\'" type="Date" value="'+currentObject.date+'"  readonly required>' + '</span>' +
+								'<br></br>' +
+								'<span class="glyphicon glyphicon-user col-md-6 ">'+ " " +'<input id="\''+projectCliNameEdit+'\'" value="'+currentObject.name+'"  readonly required>' + '</span>' +
+								'<br></br>' +
+								'<span class="glyphicon glyphicon-earphone col-md-6">' + " " +'<input id="\''+projectCliNumEdit+'\'" type="number" value="'+currentObject.number+'" readonly required>' + ' </span>'+
+								'<br></br>' +
+								'<span class="glyphicon glyphicon-envelope col-md-6">' + " " +'<input id="\''+projectCliEmailEdit+'\'" type="email" value="'+currentObject.email+'"  readonly required>' + "</span>" +
+								'<br></br>' +
+								'<span class="glyphicon glyphicon-flag col-md-6">' + " " +'<input id="\''+projectLocationEdit+'\'" value="'+currentObject.location+'"  readonly required>' + '</span>' +
+								'<br></br>' +
+								'<span class="glyphicon glyphicon-info-sign col-md-6">' + " " +'<input id="\''+projectNotesEdit+'\'" value="'+currentObject.notes+'"  readonly>' + '</span>' +
+								'<br></br>' +
+								'<a href="#" onclick="enterProject(\''+projectID+'\')" class="btn btn-success">Enter</a>' + " " + 
+								'<a href="#" onclick="saveEdit(\''+projectID+'\', \''+clientId+'\',\''+projectTitleEdit+'\',\''+projectDescEdit+'\',\''+projectCliNameEdit+'\',\''+projectCliNumEdit+'\',\''+projectCliEmailEdit+'\',\''+projectLocationEdit+'\',\''+projectDateEdit+'\',\''+projectNotesEdit+'\')" class="btn btn-success">Save</a>' + " " + 
+								'<a href="#" onclick="cancelEdit(\''+projectID+'\')" class="btn btn-danger">cancel</a>' + " " + 
+								'<div class="btn-group action-btn">' +
 								'<button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action<span class="caret"></span></button>' +
 								'<ul class="dropdown-menu">' +
-							    '<li><a href="#" onclick="deleteIssue(\''+currentObject.id+'\')">Edit</a></li>'+
+							    '<li><a href="#" onclick="editProject(\''+projectID+'\')">Edit</a></li>'+
 							    '<li role="separator" class="divider"></li>'+
-							    '<li><a href="#" onclick="deleteProject(\''+currentObject.id+'\')" >Delete</a></li>' +
+							    '<li><a href="#" onclick="deleteProject(\''+projectID+'\')" >Delete</a></li>' +
 							  	'</ul>'+
 							  	'</div>' +
 								'</div>';
@@ -150,4 +170,93 @@ function deleteProject(projId) {
   	});
 	}
 
+}
+
+function editProject(projId) {
+	var form = document.getElementById('\''+projId+'\'');
+	var ipt = form.getElementsByTagName('input');
+	var l=ipt.length;
+	while (l--) {
+		ipt[l].readOnly=false;
+	}
+	form.classList.add("invert");
+}
+
+function cancelEdit(projId) {
+	var form = document.getElementById('\''+projId+'\'');
+	var ipt = form.getElementsByTagName('input');
+	var l=ipt.length;
+	while (l--) {
+		ipt[l].readOnly=true;
+	}
+	form.classList.remove("invert");
+	fetchProjects(UID);
+}
+
+function saveEdit(projId,clientId,projectTitleEdit,projectDescEdit,projectCliNameEdit,projectCliNumEdit,projectCliEmailEdit,
+	projectLocationEdit,projectDateEdit,projectNotesEdit) {
+	var UID = firebase.auth().currentUser.uid;
+	var form = document.getElementById('\''+projId+'\'');
+	var projTitle = document.getElementById('\''+projectTitleEdit+'\'').value;
+	var projDesc = document.getElementById('\''+projectDescEdit+'\'').value;
+	var projCliName = document.getElementById('\''+projectCliNameEdit+'\'').value;
+	var projCliNum = document.getElementById('\''+projectCliNumEdit+'\'').value;
+	var projCliEmail = document.getElementById('\''+projectCliEmailEdit+'\'').value;
+	var projLocation = document.getElementById('\''+projectLocationEdit+'\'').value;
+	var projDate = document.getElementById('\''+projectDateEdit+'\'').value;
+	var projNotes = document.getElementById('\''+projectNotesEdit+'\'').value;
+
+
+	var project = {
+		clientID: clientId,
+		date: projDate,
+		description: projDesc,
+		email: projCliEmail,
+		id: projId,
+		location: projLocation,
+		name: projCliName,
+		notes: projNotes,
+		number: projCliNum,
+		title: projTitle
+	}
+
+	var client = {
+		email: projCliEmail,
+		id: clientId,
+		location: projLocation,
+		name: projCliName,
+		number: projCliNum
+	}
+
+	console.log(projId);
+	console.log(clientId);
+	
+
+	if (projTitle !="" && projCliName !="" && 
+		projCliNum !="" && projCliEmail !="" &&
+		projLocation !="" && projDate !="") {
+
+		var reg = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+		if(reg.test(projCliEmail) == false) {
+			alert('Invalid email address');
+			projCliEmail.focus();
+			return false;
+		}else {
+			// save data to firebase
+			newProjectRef.child(UID).child(projId).set(project,function(error) {
+			if (error) {
+				alert("Error!");
+			} else {
+				// retrieve data
+				fetchProjects(UID);
+				var projAlert = document.getElementById("proj-green-alert3");
+				projAlert.classList.remove("hidden");
+			}
+		});
+			// save client details to firebase
+			newClientRef.child(clientId).set(client);
+
+		}
+	}
 }

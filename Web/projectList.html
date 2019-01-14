@@ -19,6 +19,7 @@
 
 	<!-- Main Stylesheet -->
 	<link rel="stylesheet" type="text/css" href="css/progress.css">
+  <link rel="stylesheet" type="text/css" href="css/project.css">
 </head>
 <body onload="">
 
@@ -28,7 +29,7 @@
     <div class="mdl-layout__header-row">
       <span class="mdl-layout__title">Step Design
       	<span class="page-title-span"> | </span>
-      	<span class="page-title-span"> Project List </span>
+      	<span class="page-title-span"> Project Lists </span>
       </span>
       <div class="mdl-layout-spacer"></div>
       <nav class="mdl-navigation">
@@ -50,17 +51,22 @@
     <div class="page-content"><!-- Your content goes here -->
       
       <!-- Alert here -->
-<div id="proj-green-alert1" class="alert alert-success alert-dismissible text-center hidden" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <strong>Well done!</strong> Save successful!
-</div>
+  <div id="proj-green-alert1" class="alert alert-success alert-dismissible text-center hidden" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <strong>Message: </strong> Save successful!
+  </div>
 <div id="proj-green-alert2" class="alert alert-success alert-dismissible text-center hidden" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <strong>Well done!</strong> Remove successed!
+  <strong>Message: </strong> Remove successed!
 </div>
+<div id="proj-green-alert3" class="alert alert-success alert-dismissible text-center hidden" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <strong>Message: </strong> Your project has been successfully updated!
+  </div>
 
 <div class="container">
-    <h1>Projects<small>    Add project</small>
+  <h3><span class="glyphicon glyphicon-home"></span> Home / projects</h3>
+    <h1>#<small>    Add project</small>
 <!-- Mini FAB button -->
 <button id="formBtn" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
   <i class="material-icons">add</i>
@@ -99,7 +105,7 @@
         </div>
         <div class="form-group">
           <label for="projectNotesInput">Notes (Optional)</label>
-          <input type="text" class="form-control" id="projectNotesInput" placeholder="Enter additional notes here ...">
+          <input type="text" class="form-control" id="projectNotesInput" value="none" placeholder="Enter additional notes here ...">
         </div>
         <button id="add-btn" type="submit" class="btn btn-primary" >Add</button>
         <div id="submitProgress" class="mdl-spinner mdl-js-spinner is-active"></div>
