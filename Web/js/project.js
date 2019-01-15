@@ -117,7 +117,7 @@ function fetchProjects(UID){
       var projectDateEdit = projectID+currentObject.date;
       var projectNotesEdit = projectID+currentObject.notes+"1";
 
-    projectList.innerHTML +='<div class="well" id="\''+projectID+'\'">'+
+    projectList.innerHTML +='<div class="well box-style-2" id="\''+projectID+'\'">'+
 								'<h6>Project ID: ' + currentObject.id + '</h6>' +
 								'<h3>' + '<input id="\''+projectTitleEdit+'\'" value="'+currentObject.title+'" readonly required>' + '</h3>'+
 								'<h5>' + "Description: " + '<input id="\''+projectDescEdit+'\'" value="'+currentObject.description+'"  readonly>' + '</h5>'+
@@ -228,8 +228,6 @@ function saveEdit(projId,clientId,projectTitleEdit,projectDescEdit,projectCliNam
 		number: projCliNum
 	}
 
-	console.log(projId);
-	console.log(clientId);
 	
 
 	if (projTitle !="" && projCliName !="" && 

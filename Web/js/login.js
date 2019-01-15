@@ -94,7 +94,7 @@ function retrieveData(currentUser){
   firebase.database().ref('/Users/' + currentUser).once('value').then(function(snapshot){
     var usersObject = snapshot.val();
     
-    var userName = snapshot.child("name").val();
+    var userName = snapshot.child("name").val().toUpperCase();
 
     setTimeout(() =>  document.getElementById("title-name").textContent = "Hi, " + userName , 3000);
     
