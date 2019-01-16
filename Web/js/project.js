@@ -117,7 +117,8 @@ function fetchProjects(UID){
       var projectDateEdit = projectID+currentObject.date;
       var projectNotesEdit = projectID+currentObject.notes+"1";
 
-    projectList.innerHTML +='<div class="well box-style-2" id="\''+projectID+'\'">'+
+    projectList.innerHTML +='<div class="col-md-6">' +
+    							'<div class="well box-style-2" id="\''+projectID+'\'">'+
 								'<h6>Project ID: ' + currentObject.id + '</h6>' +
 								'<h3>' + '<input id="\''+projectTitleEdit+'\'" value="'+currentObject.title+'" readonly required>' + '</h3>'+
 								'<h5>' + "Description: " + '<input id="\''+projectDescEdit+'\'" value="'+currentObject.description+'"  readonly>' + '</h5>'+
@@ -143,6 +144,7 @@ function fetchProjects(UID){
 							    '<li role="separator" class="divider"></li>'+
 							    '<li><a href="#" onclick="deleteProject(\''+projectID+'\')" >Delete</a></li>' +
 							  	'</ul>'+
+							  	'</div>' +
 							  	'</div>' +
 								'</div>';
     }
