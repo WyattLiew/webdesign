@@ -71,10 +71,10 @@
         </ol>
           <h2 class="page-header">Projects
             <!-- Mini FAB button -->
-            <button id="formBtn" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
+            <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab" type="button" data-toggle="modal" data-target="#addProject">
               <i class="material-icons">add</i>
           </button></h2>
-          <div id="projForm">
+          <!-- <div id="projForm">
             <div class="well box-style-2">
             <h3>New Project:</h3>
             <h5>* Required</h5>
@@ -115,9 +115,10 @@
               <div id="submitProgress" class="mdl-spinner mdl-js-spinner is-active"></div>
             </form>
           </div>
-        </div>
+        </div> -->
           <div class="col-lg-12">
             <div class="" id="projectList">
+              <div  class="mdl-spinner mdl-js-spinner is-active"></div>
             </div>
           </div>
           
@@ -126,6 +127,62 @@
           </div>
         </main>
       </div>
+
+      <!-- Modals -->
+
+<!-- Add Project -->
+<div class="modal fade" id="addProject" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    <form id="projectInputForm">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">New Project:</h4>
+        <h5>* Required</h5>
+      </div>
+      <div class="modal-body">
+              <div class="form-group">
+                <label for="projectTitleInput">Project title *</label>
+                <input type="text" class="form-control" id="projectTitleInput" placeholder="Enter title here ..."  required>
+              </div>
+              <div class="form-group">
+                <label for="projectDescInput">Description</label>
+                <input type="text" class="form-control" id="projectDescInput" placeholder="Describe the project ...">
+              </div>
+              <div class="form-group">
+                <label for="projectCliNameInput">Client name *</label>
+                <input type="text" class="form-control" id="projectCliNameInput" placeholder="Enter client name here ..." required>
+              </div>
+              <div class="form-group">
+                <label for="projectCliNumInput">Client number *</label>
+                <input type="number" class="form-control" id="projectCliNumInput" placeholder="Enter client contact number here ..." required>
+              </div>
+              <div class="form-group">
+                <label for="projectCliEmailInput">Client email *</label>
+                <input type="email" class="form-control" id="projectCliEmailInput" placeholder="Enter client email here ..." required>
+              </div>
+              <div class="form-group">
+                <label for="projectLocationInput">Location *</label>
+                <input type="text" class="form-control" id="projectLocationInput" placeholder="Enter project location here ..." required>
+              </div>
+              <div class="form-group">
+                <label for="projectDateInput">Date *</label>
+                <input type="Date" class="form-control" id="projectDateInput" required>
+              </div>
+              <div class="form-group">
+                <label for="projectNotesInput">Notes (Optional)</label>
+                <input type="text" class="form-control" id="projectNotesInput" value="none" placeholder="Enter additional notes here ...">
+              </div>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button id="add-btn" type="submit" class="btn btn-primary" >Add</button>
+      </div>
+  </form>
+    </div>
+  </div>
+</div>
 
       <!--<script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>-->
       <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-app.js"></script>

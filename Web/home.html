@@ -59,15 +59,13 @@
 	      		<div class="col-md-2">
 	      			<div class="dropdown create">
 					  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-					    Dropdown
+					    Create Project
 					    <span class="caret"></span>
 					  </button>
 					  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-					    <li><a href="#">Action</a></li>
+					    <li><a type="button" data-toggle="modal" data-target="#addProject">Action</a></li>
 					    <li><a href="#">Another action</a></li>
 					    <li><a href="#">Something else here</a></li>
-					    <li role="separator" class="divider"></li>
-					    <li><a href="#">Separated link</a></li>
 					  </ul>
 		</div>
 	      		</div>
@@ -123,25 +121,110 @@
 				   	</div>
 				  </div>
 				</div>
-				<!-- CLients Details -->
+				<!-- Project Details -->
+				<div class="panel panel-default">
+				  <div class="panel-heading main-color-background">
+				    <h3 class="panel-title">Project Details</h3>
+				  </div>
+				  <div class="panel-body">
+				    <div class="" id="projectList">
+              <div  class="mdl-spinner mdl-js-spinner is-active"></div>
+            </div>
+				  </div>
+				</div>
+
+				<!-- Defect Details -->
+				<div class="panel panel-default">
+				  <div class="panel-heading main-color-background">
+				    <h3 class="panel-title">Defect Details</h3>
+				  </div>
+				  <div class="panel-body">
+				    <table class="table-striped">
+				    	<div id="clientDetails">
+				    		
+				    	</div>
+				    </table>
+				  </div>
+				</div>
+
+				<!-- CLient Details -->
 				<div class="panel panel-default">
 				  <div class="panel-heading main-color-background">
 				    <h3 class="panel-title">Client Details</h3>
 				  </div>
 				  <div class="panel-body">
-				    Panel content
+				    <table class="table-striped">
+				    	<div id="clientDetails">
+				    		
+				    	</div>
+				    </table>
 				  </div>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
-		  
   
-
     </div>
   </main>
 </div>
+
+<!-- Modals -->
+
+<!-- Add Project -->
+<div class="modal fade" id="addProject" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    <form id="projectInputForm">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">New Project:</h4>
+        <h5>* Required</h5>
+      </div>
+      <div class="modal-body">
+              <div class="form-group">
+                <label for="projectTitleInput">Project title *</label>
+                <input type="text" class="form-control" id="projectTitleInput" placeholder="Enter title here ..."  required>
+              </div>
+              <div class="form-group">
+                <label for="projectDescInput">Description</label>
+                <input type="text" class="form-control" id="projectDescInput" placeholder="Describe the project ...">
+              </div>
+              <div class="form-group">
+                <label for="projectCliNameInput">Client name *</label>
+                <input type="text" class="form-control" id="projectCliNameInput" placeholder="Enter client name here ..." required>
+              </div>
+              <div class="form-group">
+                <label for="projectCliNumInput">Client number *</label>
+                <input type="number" class="form-control" id="projectCliNumInput" placeholder="Enter client contact number here ..." required>
+              </div>
+              <div class="form-group">
+                <label for="projectCliEmailInput">Client email *</label>
+                <input type="email" class="form-control" id="projectCliEmailInput" placeholder="Enter client email here ..." required>
+              </div>
+              <div class="form-group">
+                <label for="projectLocationInput">Location *</label>
+                <input type="text" class="form-control" id="projectLocationInput" placeholder="Enter project location here ..." required>
+              </div>
+              <div class="form-group">
+                <label for="projectDateInput">Date *</label>
+                <input type="Date" class="form-control" id="projectDateInput" required>
+              </div>
+              <div class="form-group">
+                <label for="projectNotesInput">Notes (Optional)</label>
+                <input type="text" class="form-control" id="projectNotesInput" value="none" placeholder="Enter additional notes here ...">
+              </div>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+  </form>
+    </div>
+  </div>
+</div>
+
 
 <!--<script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>-->
 <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-app.js"></script>
@@ -161,5 +244,6 @@
 </script>
 
 <script type="text/javascript" src="js/login.js"></script>
+<script type="text/javascript" src="js/project.js"></script>
 </body>
 </html>

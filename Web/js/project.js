@@ -17,16 +17,16 @@ firebase.auth().onAuthStateChanged(function(user){
 });
 
 
-document.getElementById('formBtn').addEventListener('click',showForm);
-var Textinput = document.getElementById('projForm');
+//document.getElementById('formBtn').addEventListener('click',showForm);
+//var Textinput = document.getElementById('projForm');
 
-function showForm(e){
-	if (Textinput.style.display === "none") {
-	Textinput.style.display="block";
-	}else{
-		Textinput.style.display="none";
-	}
-}
+// function showForm(e){
+// 	if (Textinput.style.display === "none") {
+// 	Textinput.style.display="block";
+// 	}else{
+// 		Textinput.style.display="none";
+// 	}
+// }
 
 document.getElementById('projectInputForm').addEventListener('submit',saveProject);
 projSubmitProgress = document.getElementById("submitProgress");
@@ -67,17 +67,18 @@ function saveProject(e){
 
 	e.preventDefault();
 
-	if (projTitle !="" && projCliName !="" && 
+	if (projTitle !="" && projTitle.length >1 && 
+		projCliName.length >1 && projCliName !="" && 
 		projCliNum !="" && projCliEmail !="" &&
 		projLocation !="" && projDate !="") {
 		// Show progress
-		projSubmitProgress.style.display="inline-block";
-		projAddBtn.style.display="none";
+		//projSubmitProgress.style.display="inline-block";
+		//projAddBtn.style.display="none";
 
 		// save data to firebase
 		newProjectRef.child(UID).child(projectId).set(project,function(error) {
 			if (error) {
-				alert("Error!");
+				alert("Error!:" +error);
 			} else {
 				// Reset field
 				document.getElementById('projectInputForm').reset();
@@ -86,8 +87,8 @@ function saveProject(e){
 				//alert("Save Successfully!");
 				var projAlert = document.getElementById("proj-green-alert1");
 				projAlert.classList.remove("hidden");
-				projSubmitProgress.style.display="none";
-				projAddBtn.style.display="inline-block";
+				//projSubmitProgress.style.display="none";
+				//projAddBtn.style.display="inline-block";
 			}
 		});
 		// save client details to firebase
