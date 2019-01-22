@@ -133,9 +133,9 @@ function fetchProjects(UID){
 								'<br></br>' +
 								'<span class="glyphicon glyphicon-flag col-md-6">' + " " +'<input id="\''+projectLocationEdit+'\'" value="'+currentObject.location+'"  readonly required>' + '</span>' +
 								'<br></br>' +
-								'<span class="glyphicon glyphicon-info-sign col-md-6">' + " " +'<input id="\''+projectNotesEdit+'\'" value="'+currentObject.notes+'"  readonly>' + '</span>' +
+								'<span class="glyphicon glyphicon-comment col-md-6">' + " " +'<input id="\''+projectNotesEdit+'\'" value="'+currentObject.notes+'"  readonly>' + '</span>' +
 								'<br></br>' +
-								'<a href="#" onclick="enterProject(\''+projectID+'\')" class="btn btn-success">Enter</a>' + " " + 
+								'<a href="#" onclick="enterProject(\''+projectID+'\',\''+currentObject.title+'\')" class="btn btn-success">Enter</a>' + " " + 
 								'<a href="#" onclick="saveEdit(\''+projectID+'\', \''+clientId+'\',\''+projectTitleEdit+'\',\''+projectDescEdit+'\',\''+projectCliNameEdit+'\',\''+projectCliNumEdit+'\',\''+projectCliEmailEdit+'\',\''+projectLocationEdit+'\',\''+projectDateEdit+'\',\''+projectNotesEdit+'\')" class="btn btn-success">Save</a>' + " " + 
 								'<a href="#" onclick="cancelEdit(\''+projectID+'\')" class="btn btn-danger">cancel</a>' + " " + 
 								'<div class="btn-group action-btn">' +
@@ -260,4 +260,14 @@ function saveEdit(projId,clientId,projectTitleEdit,projectDescEdit,projectCliNam
 
 		}
 	}
+}
+
+function enterProject(projId,projTitle) {
+	var value1 = projId;
+	var value2 = projTitle;
+  	var queryString = "?para=" + value1;
+    localStorage.setItem('objectToPass',value2);
+
+    window.location.href = "progressList.html" + queryString ;
+    
 }

@@ -1,7 +1,7 @@
       <!DOCTYPE html>
       <html>
       <head>
-      	<title>Dashboard - Step Design</title>
+      	<title>Progress - Step Design</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
       	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
       	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.deep_purple-pink.min.css" />
@@ -29,7 +29,7 @@
           <div class="mdl-layout__header-row">
             <span class="mdl-layout__title">Step Design
             	<span class="page-title-span"> | </span>
-            	<span class="page-title-span"> Projects</span>
+            	<span class="page-title-span"> Progress</span>
             </span>
             <div class="mdl-layout-spacer"></div>
             <nav class="mdl-navigation">
@@ -51,15 +51,15 @@
           <div class="page-content"><!-- Your content goes here -->
             
         <!-- Alert here -->
-        <div id="proj-green-alert1" class="alert alert-success alert-dismissible text-center hidden" role="alert">
+        <div id="progress-green-alert1" class="alert alert-success alert-dismissible text-center hidden" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <strong>Message: </strong> Save successful!
+          <strong>Message: </strong> Progress save successful!
         </div>
-        <div id="proj-green-alert2" class="alert alert-success alert-dismissible text-center hidden" role="alert">
+        <div id="progress-green-alert2" class="alert alert-success alert-dismissible text-center hidden" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <strong>Message: </strong> Remove successed!
         </div>
-        <div id="proj-green-alert3" class="alert alert-success alert-dismissible text-center hidden" role="alert">
+        <div id="progress-green-alert3" class="alert alert-success alert-dismissible text-center hidden" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <strong>Message: </strong> Your project has been successfully updated!
         </div>
@@ -67,62 +67,22 @@
       <div class="container">
         <ol class="breadcrumb">
           <li><span class="glyphicon glyphicon-home"> <a href="home.html">Home</a></li>
-          <li class="active">Project</li>
+          <li><a href="projectList.html">Project</a></li>
+          <li class="active">Progress</li>
         </ol>
-          <h2 class="page-header">Projects
+          <h2 class="page-header">Progress
             <!-- Mini FAB button -->
             <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab" type="button" data-toggle="modal" data-target="#addProject">
               <i class="material-icons">add</i>
           </button></h2>
-          <!-- <div id="projForm">
-            <div class="well box-style-2">
-            <h3>New Project:</h3>
-            <h5>* Required</h5>
-            <form id="projectInputForm">
-              <div class="form-group">
-                <label for="projectTitleInput">Project title *</label>
-                <input type="text" class="form-control" id="projectTitleInput" placeholder="Enter title here ..."  required>
-              </div>
-              <div class="form-group">
-                <label for="projectDescInput">Description</label>
-                <input type="text" class="form-control" id="projectDescInput" placeholder="Describe the project ...">
-              </div>
-              <div class="form-group">
-                <label for="projectCliNameInput">Client name *</label>
-                <input type="text" class="form-control" id="projectCliNameInput" placeholder="Enter client name here ..." required>
-              </div>
-              <div class="form-group">
-                <label for="projectCliNumInput">Client number *</label>
-                <input type="number" class="form-control" id="projectCliNumInput" placeholder="Enter client contact number here ..." required>
-              </div>
-              <div class="form-group">
-                <label for="projectCliEmailInput">Client email *</label>
-                <input type="email" class="form-control" id="projectCliEmailInput" placeholder="Enter client email here ..." required>
-              </div>
-              <div class="form-group">
-                <label for="projectLocationInput">Location *</label>
-                <input type="text" class="form-control" id="projectLocationInput" placeholder="Enter project location here ..." required>
-              </div>
-              <div class="form-group">
-                <label for="projectDateInput">Date *</label>
-                <input type="Date" class="form-control" id="projectDateInput" required>
-              </div>
-              <div class="form-group">
-                <label for="projectNotesInput">Notes (Optional)</label>
-                <input type="text" class="form-control" id="projectNotesInput" value="none" placeholder="Enter additional notes here ...">
-              </div>
-              <button id="add-btn" type="submit" class="btn btn-primary" >Add</button>
-              <div id="submitProgress" class="mdl-spinner mdl-js-spinner is-active"></div>
-            </form>
-          </div>
-        </div> -->
+          
           <!-- Project Details -->
         <div class="panel panel-default">
           <div class="panel-heading main-color-background">
-            <h3 class="panel-title">Project Lists</h3>
+            <h3 class="panel-title">Progress Lists</h3>
           </div>
           <div class="panel-body">
-            <div class="" id="projectList">
+            <div class="" id="progressList">
               <div  class="mdl-spinner mdl-js-spinner is-active"></div>
             </div>
           </div>
@@ -140,50 +100,43 @@
 <div class="modal fade" id="addProject" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-    <form id="projectInputForm">
+    <form id="progressInputForm">
       <div class="modal-header main-color-background">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">New Project:</h4>
+        <h4 class="modal-title" id="myModalLabel">New Progress:</h4>
         <h5>* Required</h5>
       </div>
       <div class="modal-body">
               <div class="form-group">
-                <label for="projectTitleInput">Project title *</label>
-                <input type="text" class="form-control" id="projectTitleInput" placeholder="Enter title here ..."  required>
+                <label for="progressUploadImages">Upload Images * (Image Only)</label>
+                <input type="file" class="upload-group" id="progressUploadImages" required multiple>
               </div>
               <div class="form-group">
-                <label for="projectDescInput">Description</label>
-                <input type="text" class="form-control" id="projectDescInput" placeholder="Describe the project ...">
+                <label for="progressSelection">Progress Status </label><br>
+                <select id="progressStatus">
+                  <option value="completed">Completed</option>
+                  <option value="in progress">In Progress</option>
+                  <option value="deferred">Deferred</option>
+                </select>
               </div>
               <div class="form-group">
-                <label for="projectCliNameInput">Client name *</label>
-                <input type="text" class="form-control" id="projectCliNameInput" placeholder="Enter client name here ..." required>
-              </div>
-              <div class="form-group">
-                <label for="projectCliNumInput">Client number *</label>
-                <input type="number" class="form-control" id="projectCliNumInput" placeholder="Enter client contact number here ..." required>
-              </div>
-              <div class="form-group">
-                <label for="projectCliEmailInput">Client email *</label>
-                <input type="email" class="form-control" id="projectCliEmailInput" placeholder="Enter client email here ..." required>
-              </div>
-              <div class="form-group">
-                <label for="projectLocationInput">Location *</label>
-                <input type="text" class="form-control" id="projectLocationInput" placeholder="Enter project location here ..." required>
-              </div>
-              <div class="form-group">
-                <label for="projectDateInput">Date *</label>
-                <input type="Date" class="form-control" id="projectDateInput" required>
+                <label for="progressDateInput">Date *</label>
+                <input type="Date" class="form-control" id="progressDateInput" required>
               </div>
               <div class="form-group">
                 <label for="projectNotesInput">Notes (Optional)</label>
-                <input type="text" class="form-control" id="projectNotesInput" value="none" placeholder="Enter additional notes here ...">
+                <input type="text" class="form-control" id="progressNotesInput" value="none" placeholder="Enter additional notes here ...">
+              </div>
+              <div class="form-group">
+                <label for="projectNotesInput">Visibility</label><br>
+                <label for="progressEveryone" class="radio-inline"> <input type="radio" id="progressEveryone" name="visibility" checked>Everyone </label>
+                <label for="progressUserOnly" class="radio-inline"><input type="radio" id="progressUserOnly" name="visibility">Menbers </label>
               </div>
       </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button id="add-btn" type="submit" class="btn btn-primary" >Add</button>
+        <button id="progress-add-btn" type="submit" class="btn btn-primary" >Add</button>
       </div>
   </form>
     </div>
@@ -194,6 +147,7 @@
       <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-app.js"></script>
       <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-auth.js"></script>
       <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-database.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-storage.js"></script>
       <script>
         // Initialize Firebase
         var config = {
@@ -207,7 +161,8 @@
         firebase.initializeApp(config);
       </script>
 
-      <script type="text/javascript" src="js/project.js"></script>
+      
       <script type="text/javascript" src="js/login.js"></script>
+      <script type="text/javascript" src="js/progress.js"></script>
       </body>
       </html>

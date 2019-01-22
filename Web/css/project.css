@@ -1,5 +1,5 @@
 .main-color-background{
-	background: rgb(103,58,183) !important;
+	background: #673ab7 !important;
 	color: #ffffff !important;
 }
 
@@ -72,5 +72,8 @@ a:nth-of-type(3) {
 	text-align: center;
 }
 
-
+/** Progress close btn **/
+.close {
+	color: #fff;
+}
 
