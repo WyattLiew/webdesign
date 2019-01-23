@@ -96,12 +96,12 @@ function saveProject(e){
 	} 
 }
 
-
 function fetchProjects(UID){
 	firebase.database().ref('/Projects/' + UID).once('value').then(function(snapshot){
     var projectObject = snapshot.val();
 	var projectList = document.getElementById('projectList');
 	projectList.innerHTML = '';
+	if (projectObject){
     var keys = Object.keys(projectObject);
 
     for (var i = 0; i < keys.length; i++){
@@ -149,6 +149,12 @@ function fetchProjects(UID){
 							  	'</div>' +
 								'</div>';
     }
+    }else {
+		progressList.innerHTML ='<div class="col-md-12">'+
+								'<h4 class="text-center">There are no project yet.' +
+								'<a class="btn btn-link" data-toggle="modal" data-target="#addProject">Create one</a></h4>' +
+								'</div>';
+	}
   }).catch(function(error){
     var errorCode = error.code;
     var errorMessage = error.message;

@@ -11,7 +11,7 @@ var UID;
 var queryString = decodeURIComponent(window.location.search);
 queryString = queryString.substring(6);
 
-var myData = localStorage.getItem("objectToPass");
+var projTitle = localStorage.getItem("objectToPass");
 
 // check user log in status //
 firebase.auth().onAuthStateChanged(function(user){
@@ -27,6 +27,8 @@ fetchProgress(queryString);
 
 // progress add button
 document.getElementById('progressInputForm').addEventListener('submit',saveProgress);
+progressSubmitProgress = document.getElementById("submitProgress");
+progressAddBtn = document.getElementById("progress-add-btn");
 
 function saveProgress(e){
 var UID = firebase.auth().currentUser.uid;
@@ -34,7 +36,7 @@ var progressStatus= document.getElementById('progressStatus').value;
 var progressDate = document.getElementById('progressDateInput').value;
 var progressNotes = document.getElementById('progressNotesInput').value;
 var vEveryone = document.getElementById("progressEveryone").checked;
-	var vUserOnly = document.getElementById("progressUserOnly").checked;
+var vUserOnly = document.getElementById("progressUserOnly").checked;
 var progressId = newProgressRef.push().key;
 var visibility = true;
 
@@ -72,14 +74,19 @@ var progressAddOn = {
 e.preventDefault();
 
 if (selectedFile != null && progressDate !="" && selectedFile.type.match('image')) {
+	// Show progress
+		progressSubmitProgress.style.display="inline-block";
+		progressAddBtn.style.display="none";
+
 	// Upload image to firebase storage //
-	var uploadImage = progressStorageRef.child(myData).child(filename).put(selectedFile);
+	var uploadImage = progressStorageRef.child(UID).child(projTitle).child(progressId).child(filename).put(selectedFile);
 	
 	uploadImage.on('state_changed', function(snapshot){
 
 	}, function(error){
 		let errorMessage = error.message;
 		alert("Error!:" +errorMessage);
+		
 	}, function() {
 		//Handle successful uploads on complete
 		//For instance, get the download URL: https// firebasestorage.googleapis.com/...
@@ -93,6 +100,9 @@ if (selectedFile != null && progressDate !="" && selectedFile.type.match('image'
 		if (error) {
 			let errorMessage = error.message;
 			alert("Error!:" +errorMessage);
+			// Stop progress
+			progressSubmitProgress.style.display="none";
+			progressAddBtn.style.display="inline-block";
 		} else {
 			// Reset field
 			document.getElementById('progressInputForm').reset();
@@ -101,6 +111,10 @@ if (selectedFile != null && progressDate !="" && selectedFile.type.match('image'
 			//alert("Save Successfully!");
 			var progressAlert = document.getElementById("progress-green-alert1");
 			progressAlert.classList.remove("hidden");
+
+			// Stop progress
+			progressSubmitProgress.style.display="none";
+			progressAddBtn.style.display="inline-block";
 		}
 	});
 	});
@@ -108,9 +122,10 @@ if (selectedFile != null && progressDate !="" && selectedFile.type.match('image'
 
 	// input file
 	var selectedFiles = document.querySelector('#progressUploadImages').files;
+	console.log(selectedFiles);
 
 	for (var i = 0; i < selectedFiles.length;i++) {
-		var files = selectedFiles[i];
+		//var files = selectedFiles[i];
 		// get file name && timestamp
 		var fullPaths = document.getElementById("progressUploadImages").files[i].name;
 		var filenames = "";
@@ -118,9 +133,8 @@ if (selectedFile != null && progressDate !="" && selectedFile.type.match('image'
 		    filenames = fullPaths +" (" + Date.now() + ")";
 		}
 		// check file image type
-		if (files.type.match('image')){
-			var uploadImages = progressStorageRef.child(myData).child(filenames).put(selectedFiles[i]);
-
+		if (selectedFiles[i].type.match('image')){
+		var uploadImages = progressStorageRef.child(UID).child(projTitle).child(progressId).child(filenames).put(selectedFiles[i]);
 
 		uploadImages.on('state_changed', function(snapshot){
 
@@ -134,6 +148,7 @@ if (selectedFile != null && progressDate !="" && selectedFile.type.match('image'
 		uploadImages.snapshot.ref.getDownloadURL().then(function(downloadURLs) {
 		// add imgurl to progress json
 		progressAddOn.imgURL = downloadURLs;
+		console.log(downloadURLs);
 
 		var imageId = progressAddonImages.push().key;
 		// add image id to progress json
@@ -144,8 +159,6 @@ if (selectedFile != null && progressDate !="" && selectedFile.type.match('image'
 		if (error) {
 			let errorMessage = error.message;
 			alert("Error!:" +errorMessage);
-		} else {
-			console.log("Save successful");
 		}
 	});
 	});
@@ -165,6 +178,8 @@ function fetchProgress(queryString){
     var progressObject = snapshot.val();
 	var progressList = document.getElementById('progressList');
 	progressList.innerHTML = '';
+
+	if (progressObject){
     var keys = Object.keys(progressObject);
 
     for (var i = 0; i < keys.length; i++){
@@ -176,33 +191,45 @@ function fetchProgress(queryString){
       var progressImageURLEdit = progressID + currentObject.imgURL; 
       var progressDateEdit = progressID+currentObject.date;
       var progressNotesEdit = progressID+currentObject.notes+"1";
+      var progressSelectStatusEdit = progressID + "Status";
+      var progressEveryoneEdit = progressID + "Everyone";
+      var progressUserOnlyEdit = progressID + "Menbers";
 
     progressList.innerHTML +='<div class="col-md-6">' +
     							'<div class="well box-style-2" id="\''+progressID+'\'">'+
 								'<h6>Progress ID: ' + currentObject.id + '</h6>' +
-								'<img src="'+currentObject.imgURL+'"class="img-thumbnail contentImage"">' +
-								'<h3>' + '<input id="\''+progressStatusEdit+'\'" value="'+currentObject.status+'" class="text-capitalize" readonly required>' + '</h3>'+
+								'<img src="'+currentObject.imgURL+'"class="img-thumbnail contentImage">' +
+								'<h3>' + '<input id="\''+progressStatusEdit+'\'" value="'+currentObject.status+'" class="text-capitalize" readonly required>' +
+								'<select id="\''+progressSelectStatusEdit+'\'" class="hidden"> <option value="completed">Completed</option> <option value="in progress">In progress</option> <option value="deferred">Deferred</option></select></h3>' +
 								//'<h5>' + "Description: " + '<input id="\''+projectDescEdit+'\'" value="'+currentObject.description+'"  readonly>' + '</h5>'+
 								'<span class="glyphicon glyphicon-time col-md-6">' +" "+ '<input id="\''+progressDateEdit+'\'" type="Date" value="'+currentObject.date+'"  readonly required>' + '</span>' +
 								'<br></br>' +
-								'<span class="glyphicon glyphicon-eye-open col-md-6">' + " " +'<input id="\''+progressVisibilityEdit+'\'" type="text" value="'+currentObject.visibility+'" class="text-uppercase" readonly required>' + ' </span>'+
+								'<span class="glyphicon glyphicon-eye-open col-md-6">' + " " +'<input id="\''+progressVisibilityEdit+'\'" type="text" value="'+getVisibility(currentObject.visibility)+'" class="text-uppercase" readonly required>' + 
+								'<label id="\''+progressEveryoneEdit+'\'" class="radio-inline hidden"><input type="radio" id="\''+progressEveryoneEdit+'\'" name="\''+progressID+"visibility"+'\'" required>Everyone </label>' +
+								'<label id="\''+progressUserOnlyEdit+'\'" class="radio-inline hidden"><input type="radio" id="\''+progressUserOnlyEdit+'\'" name="\''+progressID+"visibility"+'\'">Menbers</label></span>' +
 								'<br></br>' +
 								'<span class="glyphicon glyphicon-comment col-md-6">' + " " +'<input id="\''+progressNotesEdit+'\'" value="'+currentObject.notes+'"  readonly>' + '</span>' +
 								'<br></br>' +
-								'<a href="#" onclick="enterProject(\''+progressID+'\')" class="btn btn-success">Show more</a>' + " " + 
-								'<a href="#" onclick="saveEdit(\''+progressID+'\', \''+progressVisibilityEdit+'\',\''+progressStatusEdit+'\',\''+progressDateEdit+'\',\''+progressNotesEdit+'\')" class="btn btn-success">Save</a>' + " " + 
+								'<a href="#" onclick="selectProgressImages(\''+progressID+'\')" data-toggle="modal" data-target="#progressShowMore" class="btn btn-success">Show more</a>' + " " + 
+								'<a href="#" onclick="saveEdit(\''+progressID+'\', \''+progressEveryoneEdit+'\',\''+progressUserOnlyEdit+'\',\''+progressSelectStatusEdit+'\',\''+progressDateEdit+'\',\''+progressNotesEdit+'\',\''+currentObject.imgURL+'\')" class="btn btn-success">Save</a>' + " " + 
 								'<a href="#" onclick="cancelEdit(\''+progressID+'\')" class="btn btn-danger">cancel</a>' + " " + 
 								'<div class="btn-group action-btn">' +
 								'<button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action<span class="caret"></span></button>' +
 								'<ul class="dropdown-menu">' +
-							    '<li><a href="#" onclick="editProject(\''+progressID+'\')">Edit</a></li>'+
+							    '<li><a href="#" onclick="editProgress(\''+progressID+'\',\''+progressVisibilityEdit+'\',\''+progressEveryoneEdit+'\',\''+progressUserOnlyEdit+'\',\''+progressStatusEdit+'\',\''+progressSelectStatusEdit+'\')">Edit</a></li>'+
 							    '<li role="separator" class="divider"></li>'+
-							    '<li><a href="#" onclick="deleteProject(\''+progressID+'\')" >Delete</a></li>' +
+							    '<li><a href="#" onclick="deleteProgress(\''+progressID+'\')" >Delete</a></li>' +
 							  	'</ul>'+
 							  	'</div>' +
 							  	'</div>' +
 								'</div>';
     }
+	}else {
+		progressList.innerHTML ='<div class="col-md-12">'+
+								'<h4 class="text-center">There are no progress yet.' +
+								'<a class="btn btn-link" data-toggle="modal" data-target="#addProgress">Create one</a></h4>' +
+								'</div>';
+	}
   }).catch(function(error){
     var errorCode = error.code;
     var errorMessage = error.message;
@@ -210,3 +237,152 @@ function fetchProgress(queryString){
   });
 }
 
+// Delete progress
+function deleteProgress(progressId) {
+	var result = confirm("Are you sure to delete this item?\nYou will not be able to recover this information!");
+	if (result) {
+    //Logic to delete the item
+    newProgressRef.child(queryString).child(progressId).remove()
+  		.then(function() {
+  		progressAddonImages.child(progressId).remove();
+    	//alert("Remove succeeded.");
+    	var progressAlert = document.getElementById("progress-green-alert2");
+		progressAlert.classList.remove("hidden");
+    	fetchProgress(queryString);
+  	})
+  		.catch(function(error) {
+    	alert("Remove failed: " + error.message);
+  	});
+	}
+
+}
+
+// Edit progress
+function editProgress(progressId,visibility,vEveryone,vUserOnly,progressStatusView,progressStatusEdit) {
+	var form = document.getElementById('\''+progressId+'\'');
+	var ipt = form.getElementsByTagName('input');
+
+	var s = document.getElementById('\''+progressStatusView+'\'');
+	s.classList.add("hidden");
+
+	var v = document.getElementById('\''+visibility+'\'');
+	v.classList.add("hidden");
+
+	var l=ipt.length;
+	while (l--) {
+		ipt[l].readOnly=false;
+	}
+	form.classList.add("invert");
+
+	var vEveryoneEdit = document.getElementById('\''+vEveryone+'\'');
+	var vUserOnlyEdit = document.getElementById('\''+vUserOnly+'\'');
+	var vProgressStatus = document.getElementById('\''+progressStatusEdit+'\'');
+	vEveryoneEdit.classList.remove("hidden");
+	vUserOnlyEdit.classList.remove("hidden");
+	vProgressStatus.classList.remove("hidden");
+}
+
+// cancel edit
+function cancelEdit(progressId) {
+	var form = document.getElementById('\''+progressId+'\'');
+	var ipt = form.getElementsByTagName('input');
+	var l=ipt.length;
+	while (l--) {
+		ipt[l].readOnly=true;
+	}
+	form.classList.remove("invert");
+	fetchProgress(queryString);
+}
+
+// save edit
+function saveEdit(progressID,progressEveryoneEdit,progressUserOnlyEdit,progressStatusEdit,progressDateEdit,progressNotesEdit,imageURL) {
+	var form = document.getElementById('\''+progressID+'\'');
+	var progressEveryone = document.getElementById('\''+progressEveryoneEdit+'\'').checked;
+	var progressUserOnly = document.getElementById('\''+progressUserOnlyEdit+'\'').checked;
+	var progressStatus = document.getElementById('\''+progressStatusEdit+'\'').value;
+	var progressDate = document.getElementById('\''+progressDateEdit+'\'').value;
+	var progressNotes = document.getElementById('\''+progressNotesEdit+'\'').value;
+
+	var visibility = true;
+
+	if (progressEveryone == true) {
+		visibility = true;
+	}else{
+		visibility = false;
+	}
+
+
+	var progress = {
+	visibility: visibility,
+	date: progressDate,
+	id: progressID,
+	imgURL: imageURL,
+	notes: progressNotes,
+	status: progressStatus
+}
+
+	
+
+	if (progressEveryone !="" && progressDate !="") {
+
+
+			// save data to firebase
+			newProgressRef.child(queryString).child(progressID).set(progress,function(error) {
+			if (error) {
+				alert("Error!");
+			} else {
+				// retrieve data
+				fetchProgress(queryString);
+				var progressAlert = document.getElementById("progress-green-alert3");
+				progressAlert.classList.remove("hidden");
+			}
+		});
+	}
+}
+
+/* Progress Image show more when clicked */
+function selectProgressImages(progressId){
+  firebase.database().ref('/Project add on image/' + progressId).once('value').then(function(snapshot){
+    var progressImageObject = snapshot.val();
+    var progressImageList = document.getElementById('progressImageDetails');
+    var keys = Object.keys(progressImageObject);
+
+    // Hide images function //
+    //removeElement();
+    progressImageList.innerHTML ="";
+    // Show images //
+    for (var i = 0; i < keys.length; i++){
+
+     var currentObject = progressImageObject[keys[i]];
+
+     var progressImageURLEdit = currentObject.imgURL; 
+
+      console.log(currentObject);
+    
+    progressImageList.innerHTML +='<img src="'+progressImageURLEdit+'" class="img-thumbnail">';
+
+}
+    
+}).catch(function(error){
+    var errorCode = error.code;
+    var errorMessage = error.message;
+  });
+}
+
+// Hide images //
+function removeElement(){
+    while(MoreImgElement.hasChildNodes()){
+    MoreImgElement.removeChild(MoreImgElement.firstChild);
+  }
+}
+
+// get visibility status
+function getVisibility (visibility) {
+	var x = "Everyone";
+	var y = "Members";
+	if (visibility) {
+		return x;
+	}else{
+		return y;
+	}
+}
