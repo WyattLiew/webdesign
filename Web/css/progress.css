@@ -38,6 +38,10 @@
 	display: none;
 }
 
+#submitDefDetails{
+	display: none;
+}
+
 #progressHeader{
 	display: none;
 	margin: 16px;

@@ -8,10 +8,11 @@ var progressStorageRef = storage.ref("Projects Add On");
 var UID;
 
 // get data from project page //
-var queryString = decodeURIComponent(window.location.search);
-queryString = queryString.substring(6);
+//var queryString = decodeURIComponent(window.location.search);
+//queryString = queryString.substring(6);
 
 var projTitle = localStorage.getItem("objectToPass");
+var queryString = localStorage.getItem("idToPass");
 
 // check user log in status //
 firebase.auth().onAuthStateChanged(function(user){
@@ -65,11 +66,6 @@ var progress = {
 	status: progressStatus
 }
 
-var progressAddOn = {
-	id: "",
-	imgURL: ""
-}
-
 
 e.preventDefault();
 
@@ -90,9 +86,8 @@ if (selectedFile != null && progressDate !="" && selectedFile.type.match('image'
 	}, function() {
 		//Handle successful uploads on complete
 		//For instance, get the download URL: https// firebasestorage.googleapis.com/...
-		var downloadURL = uploadImage.snapshot.downloadURL;
+		//var downloadURL = uploadImage.snapshot.downloadURL;
 		uploadImage.snapshot.ref.getDownloadURL().then(function(downloadURL) {
-
 		progress.imgURL = downloadURL;
 
 		// save data to firebase
@@ -122,10 +117,9 @@ if (selectedFile != null && progressDate !="" && selectedFile.type.match('image'
 
 	// input file
 	var selectedFiles = document.querySelector('#progressUploadImages').files;
-	console.log(selectedFiles);
 
 	for (var i = 0; i < selectedFiles.length;i++) {
-		//var files = selectedFiles[i];
+		var files = selectedFiles[i];
 		// get file name && timestamp
 		var fullPaths = document.getElementById("progressUploadImages").files[i].name;
 		var filenames = "";
@@ -134,33 +128,25 @@ if (selectedFile != null && progressDate !="" && selectedFile.type.match('image'
 		}
 		// check file image type
 		if (selectedFiles[i].type.match('image')){
-		var uploadImages = progressStorageRef.child(UID).child(projTitle).child(progressId).child(filenames).put(selectedFiles[i]);
-
-		uploadImages.on('state_changed', function(snapshot){
-
-	}, function(error){
-   		let errorMessage = error.message;
-		alert("Error!:" +errorMessage);
-	}, function() {
-		//Handle successful uploads on complete
-		//For instance, get the download URL: https// firebasestorage.googleapis.com/...
-		var downloadURLs = uploadImages.snapshot.downloadURL;
-		uploadImages.snapshot.ref.getDownloadURL().then(function(downloadURLs) {
+		var uploadImages = progressStorageRef.child(UID).child(projTitle).child(progressId)
+		.child(filenames).put(selectedFiles[i]).then(function(snapshot){
+		
 		// add imgurl to progress json
-		progressAddOn.imgURL = downloadURLs;
-		console.log(downloadURLs);
+		var url = snapshot.ref.getDownloadURL().then(function(urls){
 
-		var imageId = progressAddonImages.push().key;
-		// add image id to progress json
-		progressAddOn.id = imageId;
-
-		// save Add on image data to firebase
-		progressAddonImages.child(progressId).child(imageId).set(progressAddOn,function(error) {
-		if (error) {
-			let errorMessage = error.message;
-			alert("Error!:" +errorMessage);
-		}
-	});
+			var imageUrls = urls;
+		 	 var imageId = progressAddonImages.push().key;
+		 	// save Add on image data to firebase
+		 	progressAddonImages.child(progressId).child(imageId).set({
+			id: imageId,
+			imgURL: imageUrls
+		}, function(error) {
+		    if (error) {
+		      alert("Error!:" +errorMessage);
+		    } else {
+		      // Data saved successfully!
+		    }
+		});
 	});
 	});
 	}else{
@@ -192,8 +178,10 @@ function fetchProgress(queryString){
       var progressDateEdit = progressID+currentObject.date;
       var progressNotesEdit = progressID+currentObject.notes+"1";
       var progressSelectStatusEdit = progressID + "Status";
+      var progressEveryoneLabel = progressID + "LEveryone";
+      var progressUserOnlyLabel = progressID + "LMenbers";
       var progressEveryoneEdit = progressID + "Everyone";
-      var progressUserOnlyEdit = progressID + "Menbers";
+      var progressUserOnlyEdit = progressID + "Members";
 
     progressList.innerHTML +='<div class="col-md-6">' +
     							'<div class="well box-style-2" id="\''+progressID+'\'">'+
@@ -205,8 +193,8 @@ function fetchProgress(queryString){
 								'<span class="glyphicon glyphicon-time col-md-6">' +" "+ '<input id="\''+progressDateEdit+'\'" type="Date" value="'+currentObject.date+'"  readonly required>' + '</span>' +
 								'<br></br>' +
 								'<span class="glyphicon glyphicon-eye-open col-md-6">' + " " +'<input id="\''+progressVisibilityEdit+'\'" type="text" value="'+getVisibility(currentObject.visibility)+'" class="text-uppercase" readonly required>' + 
-								'<label id="\''+progressEveryoneEdit+'\'" class="radio-inline hidden"><input type="radio" id="\''+progressEveryoneEdit+'\'" name="\''+progressID+"visibility"+'\'" required>Everyone </label>' +
-								'<label id="\''+progressUserOnlyEdit+'\'" class="radio-inline hidden"><input type="radio" id="\''+progressUserOnlyEdit+'\'" name="\''+progressID+"visibility"+'\'">Menbers</label></span>' +
+								'<label id="\''+progressEveryoneLabel+'\'" class="radio-inline hidden"><input type="radio" id="\''+progressEveryoneEdit+'\'" name="\''+progressID+"visibility"+'\'" checked>Everyone </label>' +
+								'<label id="\''+progressUserOnlyLabel+'\'" class="radio-inline hidden"><input type="radio" id="\''+progressUserOnlyEdit+'\'" name="\''+progressID+"visibility"+'\'">Menbers</label></span>' +
 								'<br></br>' +
 								'<span class="glyphicon glyphicon-comment col-md-6">' + " " +'<input id="\''+progressNotesEdit+'\'" value="'+currentObject.notes+'"  readonly>' + '</span>' +
 								'<br></br>' +
@@ -216,7 +204,7 @@ function fetchProgress(queryString){
 								'<div class="btn-group action-btn">' +
 								'<button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action<span class="caret"></span></button>' +
 								'<ul class="dropdown-menu">' +
-							    '<li><a href="#" onclick="editProgress(\''+progressID+'\',\''+progressVisibilityEdit+'\',\''+progressEveryoneEdit+'\',\''+progressUserOnlyEdit+'\',\''+progressStatusEdit+'\',\''+progressSelectStatusEdit+'\')">Edit</a></li>'+
+							    '<li><a href="#" onclick="editProgress(\''+progressID+'\',\''+progressVisibilityEdit+'\',\''+progressEveryoneLabel+'\',\''+progressUserOnlyLabel+'\',\''+progressStatusEdit+'\',\''+progressSelectStatusEdit+'\')">Edit</a></li>'+
 							    '<li role="separator" class="divider"></li>'+
 							    '<li><a href="#" onclick="deleteProgress(\''+progressID+'\')" >Delete</a></li>' +
 							  	'</ul>'+
@@ -233,7 +221,7 @@ function fetchProgress(queryString){
   }).catch(function(error){
     var errorCode = error.code;
     var errorMessage = error.message;
-    console.log("Error: " +errorMessage);
+    alert("Error: " +errorMessage);
   });
 }
 
@@ -311,7 +299,6 @@ function saveEdit(progressID,progressEveryoneEdit,progressUserOnlyEdit,progressS
 		visibility = false;
 	}
 
-
 	var progress = {
 	visibility: visibility,
 	date: progressDate,
@@ -323,7 +310,7 @@ function saveEdit(progressID,progressEveryoneEdit,progressUserOnlyEdit,progressS
 
 	
 
-	if (progressEveryone !="" && progressDate !="") {
+	if (progressDate !="") {
 
 
 			// save data to firebase
@@ -347,17 +334,15 @@ function selectProgressImages(progressId){
     var progressImageList = document.getElementById('progressImageDetails');
     var keys = Object.keys(progressImageObject);
 
-    // Hide images function //
-    //removeElement();
+    // Hide images //
     progressImageList.innerHTML ="";
+
     // Show images //
     for (var i = 0; i < keys.length; i++){
 
      var currentObject = progressImageObject[keys[i]];
 
      var progressImageURLEdit = currentObject.imgURL; 
-
-      console.log(currentObject);
     
     progressImageList.innerHTML +='<img src="'+progressImageURLEdit+'" class="img-thumbnail">';
 
@@ -369,12 +354,6 @@ function selectProgressImages(progressId){
   });
 }
 
-// Hide images //
-function removeElement(){
-    while(MoreImgElement.hasChildNodes()){
-    MoreImgElement.removeChild(MoreImgElement.firstChild);
-  }
-}
 
 // get visibility status
 function getVisibility (visibility) {
