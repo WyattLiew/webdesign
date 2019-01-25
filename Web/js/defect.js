@@ -91,6 +91,7 @@ function fetchDefects(UID){
     var defectObject = snapshot.val();
 	var defectList = document.getElementById('defectList');
 	defectList.innerHTML = '';
+
 	if (defectObject){
     var keys = Object.keys(defectObject);
 
@@ -139,7 +140,7 @@ function fetchDefects(UID){
 								'</div>';
     }
     }else {
-		progressList.innerHTML ='<div class="col-md-12">'+
+		defectList.innerHTML ='<div class="col-md-12">'+
 								'<h4 class="text-center">There are no defect yet.' +
 								'<a class="btn btn-link" data-toggle="modal" data-target="#addDefect">Create one</a></h4>' +
 								'</div>';
