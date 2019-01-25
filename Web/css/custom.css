@@ -1,0 +1,378 @@
+body{
+	margin: 0;
+	padding: 0;
+}
+
+.content-title{
+	text-align: center;
+	font-size: 24px;
+	color:#454;
+	letter-spacing: 1px;
+	font-family: inherit;
+	font-style: inherit;
+	font-weight: 600;
+	line-height: 34px;
+	margin-bottom: 32px;
+}
+
+@keyframes content_slider-container{
+
+0%{
+	left: 0%;
+}
+
+20% {
+	left: 0%;
+}
+
+25%{
+	left: -100%;
+}
+
+45% {
+	left: -100%;
+}
+
+50% {
+	left: -200%;
+}
+
+70% {
+	left:  -200%;
+}
+
+75%{
+	left: -300%;
+}
+
+95%{
+	left: -300%;
+}
+
+100% {
+	left: -300%;
+}
+}
+
+#content_slider-container{
+	overflow: hidden;
+}
+
+#content_slider-container figure img{
+	width: 20%;
+	float: left;
+	height: 500px;
+}
+
+#content_slider-container figure{
+	position: relative;
+	width: 500%;
+	margin:0;
+	left: 0;
+	text-align: left;
+	font-size: 0;
+	animation: 20s content_slider-container infinite;
+}
+
+.description-container{
+	background-color: #fbf9fc;
+	height: 150px;
+	padding-top: 1px;
+}
+
+.description-container h3{
+	text-align: center;
+	color: #333;
+	letter-spacing: 1px;
+}
+
+.description-container p{
+	text-align: center;
+	color: #333;
+	font-size: 16px;
+	letter-spacing: 1px;
+}
+
+
+/* Title: How our interior design progress */
+.image_slider-container{
+	
+}
+
+
+.image_slider-container ul{
+	position: absolute;
+	width: 100%;
+	height:80%;
+	background:#ccc;
+	margin:0;
+	padding: 0;
+}
+
+.image_slider-title{
+	text-align: center;
+	font-size: 32px;
+	color:#777;
+	font-family: inherit;
+	font-style: inherit;
+	letter-spacing: -.5px;
+	font-weight: 600;
+	line-height: 34px;
+	margin-bottom: 15px;
+}
+
+.image_slider-title{
+	width: 100%;
+	height:70%;
+}
+
+.image_slider-container ul li{
+	list-style: none;
+	position: relative;
+	width: 20%;
+	height: 100%;
+	border-right: 1px solid #000;
+	float: left;
+	box-sizing: border-box;
+	text-align: center;
+	overflow: hidden;
+}
+
+.image_slider-container ul li:nth-child(1){
+	background: url(../assets/images/rawpixel-788527-unsplash-Photo-by-rawpixel-on-Unsplash.jpg);
+	background-size: cover;
+	background-position: left;
+}
+.image_slider-container ul li:nth-child(2){
+	background: url(../assets/images/rawpixel-1118407-unsplash-Photo-by-rawpixel-on-Unsplash.jpg);
+	background-size: cover;
+	background-position: left;
+}
+.image_slider-container ul li:nth-child(3){
+	background: url(../assets/images/rawpixel-1095818-unsplash-Photo-by-rawpixel-on-Unsplash.jpg);
+	background-size: cover;
+	background-position: left;
+}
+.image_slider-container ul li:nth-child(4){
+	background: url(../assets/images/petra-kessler-1075600-unsplash-Photo-by-Petra-Keßler-on-Unsplash.jpg);
+	background-size: cover;
+	background-position: left;
+}
+.image_slider-container ul li:nth-child(5){
+	background: url(../assets/images/rawpixel-711102-unsplash-Photo-by-rawpixel-on-Unsplash.jpg);
+	background-size: cover;
+	background-position: left;
+}
+.image_slider-container ul:hover li{
+	width: 10%;
+}
+
+.image_slider-container ul li:hover{
+	width: 60%;
+}
+
+.image_content{
+	position: absolute;
+	bottom: -100%;
+	left: 0;
+	width: 100%;
+	background: rgba(0,0,0,.8);
+	box-sizing: border-box;
+	color: #fff;
+	opacity: 0;
+}
+
+.image_slider-container ul li:hover .image_content{
+	bottom: 0;
+	transition: 0.5s;
+	transition-delay: 0.2s;
+	opacity: 1;
+}
+
+/* Contact form  */
+
+.contact-form{
+	width: 85%;
+	max-width: 600px;
+	background: #f1f1f1;
+	position: absolute;
+	margin-bottom: 20px;
+	top: 235%;
+	left: 50%;
+	padding: 30px 40px;
+	transform: translate(-50%,-50%);
+	box-sizing: border-box;
+	border-radius: 8px;
+	text-align: center;
+	box-shadow: 0 0 20px #000000b3;
+	font-family: "Montserrat",sans-serif;
+}
+.contact-form h1{
+	margin-top: 0;
+	font-weight: 200;
+	text-transform: uppercase;
+}
+.txt_box{
+	border:1px solid gray;
+	margin:8px 0;
+	padding: 12px 18px;
+	border-radius: 8px;
+}
+.txt_box label{
+	display: block;
+	text-align: left;
+	color: #333;
+	text-transform: uppercase;
+	font-size: 14px;
+}
+.txt_box input,.txt_box textarea{
+	width: 100%;
+	border:none;
+	background: none;
+	outline: none;
+	font-size: 18px;
+	margin-top: 6px;
+}
+.txt_btn{
+	display: inline-block;
+	background: #752C87;
+	padding: 14px 0;
+	color: white;
+	text-transform: uppercase;
+	cursor: pointer;
+	margin-top: 8px;
+	width: 100%;
+}
+
+footer{
+	position: absolute;
+	background-color: #424558;
+	top: 280%;
+	width: 100%;
+    height: 35px;
+    text-align: left;
+    color: #CCC;
+    clear: both;
+}
+
+footer p {
+    padding: 10.5px;
+    margin: 0px;
+    line-height: 100%;
+}
+
+/*---Media Queries --*/
+@media (max-width: 812px) {
+
+.content-title{
+	text-align: center;
+	font-size: 140%;
+	color:#454;
+	letter-spacing: 1px;
+	font-family: inherit;
+	font-style: inherit;
+	font-weight: 600;
+	line-height: 34px;
+	margin-bottom: 32px;
+}
+
+#content_slider-container figure img{
+	width: 20%;
+	float: left;
+	height: 100%;
+}
+
+.description-container{
+	background-color: #fbf9fc;
+	height: 200px;
+	padding-top: 1px;
+}
+
+.description-container h3{
+	text-align: center;
+	color: #333;
+	letter-spacing: 1px;
+}
+
+.description-container p{
+	text-align: center;
+	color: #333;
+	font-size: 90%;
+	letter-spacing: 1px;
+	padding: 1px;
+}
+
+.image_slider-title{
+	text-align: center;
+	font-size: 140%;
+	color:#777;
+	font-family: inherit;
+	font-style: inherit;
+	letter-spacing: -.5px;
+	font-weight: 600;
+	line-height: 34px;
+	margin-bottom: 15px;
+}
+
+
+.image_content h2{
+	font-size: 100%;
+}
+
+.image_content p{
+	font-size: 80%;
+	padding: 1px;
+	letter-spacing: 1px;
+}
+
+.contact-form{
+	width: 95%;
+	max-width: 600px;
+	background: #f1f1f1;
+	position: relative;
+	margin-bottom: 20px;
+	padding: 30px 40px;
+	box-sizing: border-box;
+	border-radius: 8px;
+	text-align: center;
+	box-shadow: 0 0 20px #000000b3;
+	transform: translate(-50%,0%);
+	margin-top: 160%;
+	font-family: "Montserrat",sans-serif;
+}
+
+.contact-form h1{
+	font-size: x-large;
+}
+
+footer{
+	position: relative;
+	top: 280%;
+	background-color: #424558;
+	width: 100%;
+    height: 35px;
+    text-align: left;
+    color: #CCC;
+    clear: both;
+}
+}
+
+@media (height: 375px) {
+	.contact-form{
+	margin-top: 50%;
+}
+}
+
+@media (height: 414px) {
+	.contact-form{
+	margin-top: 60%;
+}
+}
+
+@media (height: 812px) {
+	.contact-form{
+	margin-top: 190%;
+}
+}
+
+

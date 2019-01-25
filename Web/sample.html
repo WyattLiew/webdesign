@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Progress - Step Design</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.deep_purple-pink.min.css" />
+	<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+	<!-- Main Stylesheet -->
+	<link rel="stylesheet" type="text/css" href="css/progress.css">
+
+<style>
+label{display:block;}
+form input{border:none;outline:none;box-sizing:border-box;}
+form.invert input{border:1px solid rgba(0,0,0,0.2);outline:none;}
+
+form>button:nth-of-type(1){
+ color:green;display:none;
+}
+form>button:nth-of-type(2){
+ color:red;display:none;
+}
+form>button:nth-of-type(3){
+ color:yellow;display:inline-block;
+}
+form.invert>button:nth-of-type(1){
+ display:inline-block;
+}
+form.invert>button:nth-of-type(2){
+ display:inline-block;
+}
+form.invert>button:nth-of-type(3){
+ display:none;
+}
+</style>
+<script>
+(function(W){
+ var D,form,bts,ipt;
+ function init(){
+  D=W.document,previous=[];
+  form=D.getElementsByTagName('form')[0];
+  bts=form.getElementsByTagName('button');
+  ipt=form.getElementsByTagName('input');
+  form.addEventListener('submit',save,false);
+  bts[1].addEventListener('click',cancel,false);
+  bts[2].addEventListener('click',edit,false);
+ }
+ function save(e){
+  e.preventDefault();
+  form.classList.remove('invert');
+  var l=ipt.length;
+  while(l--){
+   ipt[l].readOnly=true;
+  };
+  previous=[12];
+  //send your info here 
+ }
+ function edit(e){
+  e.preventDefault();
+  form.classList.add('invert');
+  var l=ipt.length;
+  while(l--){
+   previous[l]=ipt[l].value;
+   ipt[l].readOnly=false;
+  }
+ }
+ function cancel(e){
+  form.classList.remove('invert');
+  e.preventDefault();
+  var l=ipt.length;
+  while(l--){
+   ipt[l].value=previous[l];
+   ipt[l].readOnly=true;
+  }
+ }
+ W.addEventListener('load',init,false);
+})(window)
+</script>
+
+</head>
+<body onload="queryDefectsDatabase(queryString)">
+
+	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+    <div class="mdl-layout-icon"></div>
+    <div class="mdl-layout__header-row">
+      <span class="mdl-layout__title">Step Design
+        <span class="page-title-span"> | </span>
+        <span class="page-title-span"> Sample </span>
+      </span>
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation">
+       <!-- Colored raised button -->
+    <button id="signOutBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" onclick="signOutBtn()">Sign Out<i class="button-right-icon material-icons">account_circle</i></button>
+      </nav>
+    </div>
+  </header>
+   <div class="mdl-layout__drawer">
+     <span class="mdl-layout-title">Title</span>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href="issueTrack.html">Link</a>
+      <a class="mdl-navigation__link" href="progress.html">Tracking System</a>
+      <a class="mdl-navigation__link" href="">Link</a>
+      <a class="mdl-navigation__link" href="">Link</a>
+    </nav>
+  </div>
+   <main class="mdl-layout__content">
+    <div class="page-content"><!-- Your content goes here -->
+
+ <!-- Textfield with Floating Label -->
+
+ <form>
+<label>A:<input readonly></label>
+<label>B:<input readonly></label>
+<label>C:<input readonly></label>
+<button>Save</button><button>Cancel</button><button>Edit</button>
+</form>
+
+<div id="progressHeader">
+  <h3>Progress List</h3>
+    <!-- Mini FAB button -->
+<button onclick="location.reload()" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--accent">
+ <i class="material-icons">cancel</i>
+</button>
+</div>
+
+<div id="defectsHeader">
+  <h3>Defect List</h3>
+      <!-- Mini FAB button -->
+<button onclick="location.reload()" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--accent">
+ <i class="material-icons">cancel</i>
+</button>
+</div>
+
+<div id="progressHeader">
+  <h3>Progress List</h3>
+      <!-- Mini FAB button -->
+<button onclick="location.reload()" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--accent">
+ <i class="material-icons">cancel</i>
+</button>
+</div>
+
+ 
+ 
+
+<div id="contentHolder">
+  
+</div>
+<hr  id="ImageLineBorder" style="border: 1px solid purple; display: none">
+<div id="detailsHolder">
+
+  
+</div>
+    </div>
+  </main>
+</div>
+
+
+
+<script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyB-rXLOd4NDJgb1zPmi7c6QW4Z7g_plQ4s",
+    authDomain: "mproject-sharedb.firebaseapp.com",
+    databaseURL: "https://mproject-sharedb.firebaseio.com",
+    projectId: "mproject-sharedb",
+    storageBucket: "mproject-sharedb.appspot.com",
+    messagingSenderId: "809141665249"
+  };
+  firebase.initializeApp(config);
+</script>
+
+<script type="text/javascript">
+  var queryString = decodeURIComponent(window.location.search);
+  queryString = queryString.substring(6);
+  var queries = queryString.split("?");
+  //for (var i = 0; i < queries.length; i++)
+//{
+  //myVar2 = queries[i];
+//}
+console.log(queryString);
+//console.log(myVar2);
+</script>
+
+
+<script type="text/javascript" src="js/login.js"></script>
+</body>
+</html>
