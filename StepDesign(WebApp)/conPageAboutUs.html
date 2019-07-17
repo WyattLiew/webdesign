@@ -22,10 +22,8 @@
 		body{
 		width: 100%;
 		height: 100%;
-		background: url('assets/bg5.jpg') center;
-		background-attachment: fixed;
-    	background-repeat: no-repeat;
-    	background-size: cover;
+		background: url('assets/bg5.jpg') no-repeat center fixed;
+		background-size: cover;
 		}
 
 		.navOpen{
@@ -35,29 +33,27 @@
 		.purple {
 			color: #111;
 		}
+
+		@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+     	/* IE10+ CSS styles go here */
+     	.landing-text h1{
+		font-size:20rem;
+		font-family: 'The Historia Demo', san-serif;
+		/*background: linear-gradient(to right, #85317a 0%, #6713d2 100%);*/
+		/*background: linear-gradient(60deg, #29323c 0%, #485563 100%);*/
+		color: #111111;
+		background: none;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color:transparent;
+		padding: 1rem;
+		user-select: none;
+		}
+
+		}
 		
-		/** Testimonial media query here */
-		@media screen and (max-width: 767px) {
-			body:before {
-		  content: "";
-		  display: block;
-		  position: fixed;
-		  left: 0;
-		  top: 0;
-		  width: 100%;
-		  height: 100%;
-		  z-index: -10;
-		  background: url(photos/2452.jpg) no-repeat center center;
-		  -webkit-background-size: cover;
-		  -moz-background-size: cover;
-		  -o-background-size: cover;
-		  background-size: cover;
-		}
-		}
-
-
 		
 	</style>
+
 </head>
 <body>
 	<header>
@@ -273,7 +269,7 @@
 			<p class="footer-company-logo">STEP DEZIGN - SINGAPORE</p>
 
 			<p class="footer-links">
-				<a href="conPage1.html" >Home</a>
+				<a href="index.html" >Home</a>
 				·
 				<a href="conPageAboutUs.html" >About us</a>
 				·

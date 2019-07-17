@@ -30,6 +30,10 @@ slider {
 	background-size: cover;
 	animation: slide 20s infinite;
 	overflow: hidden;
+	-webkit-perspective:2000;
+	-webkit-backface-visibility:hidden;
+	-webkit-transform:translateZ(0);
+	-webkit-transform:translate3d(0,0,0);
 }
 
 /*slider > * {
@@ -72,7 +76,7 @@ slide:nth-child(4) {
 	background-position: center;
 }
 */
-slide p {
+/*slide p {
 	font-family: Comfortaa;
 	font-size: 70px;
 	text-align: left;
@@ -80,7 +84,7 @@ slide p {
 	width: 100%;
 	margin-top: 340px;
 	color: #fff;
-}
+}*/
 
 /*@keyframes slide {
 	0% { left: 100%; width: 100%;}
@@ -94,7 +98,7 @@ slide p {
 	20% {
 		background:url(../assets/bg1.jpg);
 		background-size: cover;
-	}
+	}/*
 	50% {
 		background:url(../assets/bg2.jpg);
 		background-size: cover;
@@ -102,11 +106,14 @@ slide p {
 	70% {
 		background:url(../assets/bg3.jpg);
 		background-size: cover;
-	}
-	100% {
+	}*/
+	99% {
 		background:url(../assets/bg4.jpg);
 		background-size: cover;
 	}
+	 /*from { -webkit-transform: translateX(100%); }
+    99% { -webkit-transform: translateX(0); }
+    to {} /* equals `100% {}` Leave it empty to fix the flicker */*/
 }
 
 /** NAVIGATION CSS STARTS HERE **/
