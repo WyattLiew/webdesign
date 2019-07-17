@@ -91,7 +91,7 @@ slide p {
 }*/
 
 @keyframes slide {
-	25% {
+	20% {
 		background:url(../assets/bg1.jpg);
 		background-size: cover;
 	}
@@ -99,7 +99,7 @@ slide p {
 		background:url(../assets/bg2.jpg);
 		background-size: cover;
 	}
-	75% {
+	70% {
 		background:url(../assets/bg3.jpg);
 		background-size: cover;
 	}

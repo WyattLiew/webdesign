@@ -403,6 +403,7 @@
 		text-transform: uppercase;
 		letter-spacing: 2px;
 		margin:2rem -2px 2rem 0;
+		z-index: 1;
 	}
 
 	.icon-container {
@@ -662,6 +663,7 @@
 		justify-content: center;
 		align-items: center;
 		padding: 2rem;
+		z-index: 1;
 	}
 
 	.followus p {
@@ -1262,6 +1264,13 @@
 
 	.projects-container .projects-box {
 		max-width: 100% !important;
+		height: 250px !important;
+		width: 250px !important;
+	}
+
+	.projects-container .projects-box .projects-imgbox img {
+    	width: 250px;
+    	height: 250px;
 	}
 
 	.residential-landing-text h1 {
