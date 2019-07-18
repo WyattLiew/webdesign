@@ -888,6 +888,7 @@
 	.projects-container .projects-box .projects-imgbox{
 		position: relative;
 		overflow: hidden;
+		border: solid 2px black;
 	}
 
 	.projects-container .projects-box .projects-imgbox img{
@@ -1269,7 +1270,7 @@
 	}
 
 	.projects-container .projects-box .projects-imgbox img {
-    	width: 250px;
+    	width: 100%;
     	height: 250px;
 	}
 
@@ -1380,3 +1381,93 @@
 			transform-origin: bottom;
 		}
 }
+
+/** For IE only **/
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+	     	/* IE10+ CSS styles go here */
+	     	.landing-text h1{
+				font-size:20rem;
+				font-family: 'The Historia Demo', san-serif;
+				/*background: linear-gradient(to right, #85317a 0%, #6713d2 100%);*/
+				/*background: linear-gradient(60deg, #29323c 0%, #485563 100%);*/
+				color: #111111;
+				background: none;
+				-webkit-background-clip: text;
+				-webkit-text-fill-color:transparent;
+				padding: 1rem;
+				user-select: none;
+			}
+
+			.testimonial-landing-text h1{
+				font-size:20rem;
+				font-family: 'The Historia Demo', san-serif;
+				color: #111111;
+				background: none;
+				/*background: linear-gradient(to right, #85317a 0%, #6713d2 100%);*/
+				/*background: linear-gradient(60deg, #29323c 0%, #485563 100%);*/
+				-webkit-background-clip: text;
+				-webkit-text-fill-color:transparent;
+				padding: 1rem;
+				user-select: none;
+			}
+
+			.career-landing-text h1{
+				font-size:20rem;
+				font-family: 'The Historia Demo', san-serif;
+				/*background: linear-gradient(to right, #85317a 0%, #6713d2 100%);*/
+				color: #111111;
+				background:none;
+				-webkit-background-clip: text;
+				-webkit-text-fill-color:transparent;
+				padding: 1rem;
+				user-select: none;
+			}
+
+			.contact-landing-text h1{
+				font-size:20rem;
+				font-family: 'The Historia Demo', san-serif;
+				/*background: linear-gradient(to right, #85317a 0%, #6713d2 100%);*/
+				color: #111111;
+				background: none;
+				-webkit-background-clip: text;
+				-webkit-text-fill-color:transparent;
+				padding: 1rem;
+				user-select: none;
+			}
+
+			.residential-landing-text h1{
+				font-size:20rem;
+				font-family: 'The Historia Demo', san-serif;
+				color: #111111;
+				background: none;
+				/*background: linear-gradient(to right, #85317a 0%, #6713d2 100%);*/
+				/*background: linear-gradient(60deg, #29323c 0%, #485563 100%);*/
+				-webkit-background-clip: text;
+				-webkit-text-fill-color:transparent;
+				padding: 1rem;
+				user-select: none;
+			}
+
+			.r-col {
+				display: flex;
+				box-sizing: border-box;
+				max-width: 100% !important;
+			}
+
+			.icon-container {
+				align-items: center;
+			}
+
+			.my-skills {
+				display: -ms-flexbox;
+				-ms-flex-direction:column;
+				text-align: center;
+				justify-content: center;
+			}
+
+			.skill p {
+				max-width: 100%;
+			}
+
+		}
