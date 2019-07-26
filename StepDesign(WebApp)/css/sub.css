@@ -1,13 +1,12 @@
 /** About us Css  */
 	section{
 		padding: 6rem;
+		margin-top: 5rem;
 	}
 
 	#myImage {
-		position: fixed;
-		top: 3rem;
-		right: 3rem;
-		z-index: 0;
+		margin: 1rem 4rem 1rem 4rem;
+
 	}
 
 	header {
@@ -35,8 +34,9 @@
 	}
 
 	.landing-text h1{
-		font-size:20rem;
-		font-family: 'The Historia Demo', san-serif;
+		font-size:15rem;
+		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		/*font-family: 'The Historia Demo', san-serif;*/
 		/*background: linear-gradient(to right, #85317a 0%, #6713d2 100%);*/
 		/*background: linear-gradient(60deg, #29323c 0%, #485563 100%);*/
 		background: #111111;
@@ -61,34 +61,38 @@
 		position: fixed;
 		width: 5rem;
 		height: 5rem;
-		background-color: #fff;
-		top:15rem;
+		/*background-color: #fff;*/
+		top:0.4rem;
 		right:3rem;
 		border-radius: 50%;
 		z-index: 2000;
-		box-shadow: 0 1rem 3rem rgba(0,0,0,0.2);
+		/*box-shadow: 0 1rem 3rem rgba(0,0,0,0.2);*/
 		text-align: center;
 		cursor: pointer;
+		display: none;
 	}
 
 	.overlay {
+		display: none;
 		height: 4rem;
 		width: 4rem;
 		border-radius: 50%;
 		position: fixed;
-		top: 15rem;
+		top: 2rem;
 		right: 3.5rem;
-		background:radial-gradient(#333,#100b0b);
+		/*background:radial-gradient(#333,#100b0b);*/
 		z-index: 1000;
 		transition: transform 0.8s cubic-bezier(0.86, 0, 0.7, 1);
 	}
 
 	.main-nav {
+		float: right;
 		position: fixed;
 		height: 100vh;
 		top: 0;
 		left: 0;
 		z-index: 1500;
+		background: black;
 		opacity: 0;
 		width: 0;
 		transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -104,6 +108,31 @@
 		width: 100%;
 	}
 
+	.main-navbar{
+		display: inline-flex;
+		position: fixed;
+		z-index: 10;
+		width: 100%;
+		background: #38393a;
+	}
+	.main-nav-list {
+		display: inline-flex;
+		list-style: none;
+		text-align: center;
+		align-items: center;
+		width: 100%;
+		z-index: 10;
+		float: right;
+		margin-left: 100px;
+	}
+
+	.main-nav-items {
+		margin: 1rem;
+	}
+
+	.nav-font{
+		font-size: 2rem !important;
+	}
 	.nav-items {
 		margin: 1rem;
 	}
@@ -175,7 +204,7 @@
 	.nav-icon-bar::after {
 		width: 3rem;
 		height: 2px;
-		background-color: #333;
+		background-color: #fff;
 		display: inline-block;
 	}
 
@@ -217,10 +246,28 @@
 		transform: rotate(-135deg);
 	}
 
+	@media only screen and (max-width: 1140px) {
+		.nav-toggle-btn {
+			display: block;
+		}
+
+		.overlay{
+			display: block;
+		}
+
+		.main-nav-list {
+		display: none;
+	}
+	}
+
+	
 	@media only screen and (min-width: 600px) {
 		html{
 			font-size: 10px;
 		}
+
+
+
 	}
 
 	@media only screen and (min-width: 800px) {
@@ -306,7 +353,11 @@
 		color: #4267b2;
 	}
 
-	.fa-instagram:hover{
+	.instagram {
+		background: url(../assets/webicon/Web_icon-clock.png);
+	}
+
+	.instagram:hover{
 		color: #4267b2;
 	}
 
@@ -327,11 +378,11 @@
 
 	.section-heading h1{
 		font-size: 3.5rem;
-		color: rgba(255,255,255, .3);
+		color: #333;
 		text-transform: uppercase;
 		font-weight: 300;
 		position: relative;
-		margin-bottom: 1rem;
+		margin-bottom: 2rem;
 	}
 	
 	.section-heading h1::before,
@@ -341,7 +392,8 @@
 		bottom: -.5rem;
 		left: 50%;
 		transform: translateX(-50%);
-		background-color: rgba(255,255,255,0.75);			
+		/*background-color: rgba(255,255,255,0.75);*/
+		background-color:#333;		
 	}
 
 	.section-heading h1::before{
@@ -492,8 +544,9 @@
 	}
 
 	.career-landing-text h1{
-		font-size:20rem;
-		font-family: 'The Historia Demo', san-serif;
+		font-size:15rem;
+		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		/*font-family: 'The Historia Demo', san-serif;*/
 		/*background: linear-gradient(to right, #85317a 0%, #6713d2 100%);*/
 		background: #111111;
 		-webkit-background-clip: text;
@@ -502,7 +555,7 @@
 		user-select: none;
 	}
 	.career-landing-text h6 {
-		font-size:5rem;
+		font-size:3rem;
 		font-weight: 300;
 		color: #fff;
 	}
@@ -597,8 +650,9 @@
 	}
 
 	.contact-landing-text h1{
-		font-size:20rem;
-		font-family: 'The Historia Demo', san-serif;
+		font-size:15rem;
+		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		/*font-family: 'The Historia Demo', san-serif;*/
 		/*background: linear-gradient(to right, #85317a 0%, #6713d2 100%);*/
 		background: #111111;
 		-webkit-background-clip: text;
@@ -607,17 +661,17 @@
 		user-select: none;
 	}
 	.contact-landing-text h6 {
-		font-size:5rem;
+		font-size:3rem;
 		font-weight: 300;
 		color: #fff;
 	}
 
 	.con-details {
 		
-		display: grid;
+		/*display: grid;
 		grid-template-columns: repeat(auto-fit,minmax(25rem,1fr));
-		grid-gap: 2.5rem;
-		text-align: center;
+		grid-gap: 2.5rem;*/
+		/*text-align: center;*/
 	}
 
 	.details {
@@ -691,6 +745,26 @@
 		transition: color 650ms;
 	}
 
+	.social-media-contact-list {
+		    display: flex;
+    	flex-direction: row;
+    	align-items: center;
+	}
+
+	.social-media-contact-list i {
+		font-size: 3.5rem;
+		transition: color 650ms;
+		margin-bottom: 1.4rem;
+		margin-right: 2rem;
+	}
+	.social-media-contact-list h2 {/*
+		font-size: 1.2rem;*/
+		font-family: 'Palatino', san-serif;
+		z-index: 1;
+		margin-bottom: 1.4rem;
+		width: 300px;
+	}
+
 
 
 		.contact-form {
@@ -716,7 +790,7 @@
 			box-sizing: border-box;
 			margin: 16px 0;
 			border:0;
-			background: #111;
+			background: #e2e2e259;
 			padding: 20px 40px;
 			outline: none;
 			color: #ddd;
@@ -732,7 +806,7 @@
 			box-sizing: border-box;
 			margin: 16px 0;
 			border:0;
-			background: #111;
+			background: #e2e2e259;
 			padding: 20px 40px;
 			outline: none;
 			color: #ddd;
@@ -750,7 +824,7 @@
 			box-sizing: border-box;
 			margin: 16px 0;
 			font-size: 1.8rem;
-			color: #fff;
+			color: #333;
 			text-transform: uppercase;
 		}
 
@@ -794,8 +868,9 @@
 	}
 
 	.testimonial-landing-text h1{
-		font-size:20rem;
-		font-family: 'The Historia Demo', san-serif;
+		font-size:15rem;
+		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		/*font-family: 'The Historia Demo', san-serif;*/
 		background: #111111;
 		/*background: linear-gradient(to right, #85317a 0%, #6713d2 100%);*/
 		/*background: linear-gradient(60deg, #29323c 0%, #485563 100%);*/
@@ -806,7 +881,7 @@
 	}
 
 	.testimonial-landing-text h6 {
-		font-size:5rem;
+		font-size:3rem;
 		font-weight: 300;
 		color: #fff;
 	}
@@ -955,11 +1030,13 @@
 		width: 100%;
 		text-align: center;
 		z-index: 1;
+		display: none;
 	}
 
 	.residential-landing-text h1{
-		font-size:20rem;
-		font-family: 'The Historia Demo', san-serif;
+		font-size:15rem;
+		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		/*font-family: 'The Historia Demo', san-serif;*/
 		background: #111111;
 		/*background: linear-gradient(to right, #85317a 0%, #6713d2 100%);*/
 		/*background: linear-gradient(60deg, #29323c 0%, #485563 100%);*/
@@ -1192,8 +1269,8 @@
 	}
 	
 	#myImage {
-		width: 150px;
-		height: 70px;
+		width: 100px;
+		height: 45px;
 	}
 
 	.contact-landing-text h1 {
@@ -1206,6 +1283,10 @@
 
 	.contact-heading h1 {
 		font-size: 8rem;
+	}
+
+	.social-media-contact-list h2 {
+		width: auto !important;
 	}
 
 	.contact-icon-container {
@@ -1387,8 +1468,9 @@
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
 	     	/* IE10+ CSS styles go here */
 	     	.landing-text h1{
-				font-size:20rem;
-				font-family: 'The Historia Demo', san-serif;
+				font-size:15rem;
+				font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+				/*font-family: 'The Historia Demo', san-serif;*/
 				/*background: linear-gradient(to right, #85317a 0%, #6713d2 100%);*/
 				/*background: linear-gradient(60deg, #29323c 0%, #485563 100%);*/
 				color: #111111;
@@ -1400,8 +1482,8 @@
 			}
 
 			.testimonial-landing-text h1{
-				font-size:20rem;
-				font-family: 'The Historia Demo', san-serif;
+				font-size:15rem;
+				font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
 				color: #111111;
 				background: none;
 				/*background: linear-gradient(to right, #85317a 0%, #6713d2 100%);*/
@@ -1413,8 +1495,8 @@
 			}
 
 			.career-landing-text h1{
-				font-size:20rem;
-				font-family: 'The Historia Demo', san-serif;
+				font-size:15rem;
+				font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
 				/*background: linear-gradient(to right, #85317a 0%, #6713d2 100%);*/
 				color: #111111;
 				background:none;
@@ -1425,8 +1507,8 @@
 			}
 
 			.contact-landing-text h1{
-				font-size:20rem;
-				font-family: 'The Historia Demo', san-serif;
+				font-size:15rem;
+				font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
 				/*background: linear-gradient(to right, #85317a 0%, #6713d2 100%);*/
 				color: #111111;
 				background: none;
@@ -1437,8 +1519,8 @@
 			}
 
 			.residential-landing-text h1{
-				font-size:20rem;
-				font-family: 'The Historia Demo', san-serif;
+				font-size:15rem;
+				font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
 				color: #111111;
 				background: none;
 				/*background: linear-gradient(to right, #85317a 0%, #6713d2 100%);*/

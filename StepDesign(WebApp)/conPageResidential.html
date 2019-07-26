@@ -15,9 +15,12 @@
 		}
 		html {
 		font-size: 10px;
-		font-family: 'Roboto',san-serif;
+		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
 		color: #eee;
 
+		}
+		header{
+			height: 1vh !important;
 		}
 		body{
 		width: 100%;
@@ -41,7 +44,17 @@
 </head>
 <body>
 	<header>
-		<img id="myImage" alt="Step Design Company" src="assets/logo.png"  width="250" height="90" />
+		<div class="main-navbar">
+		<img id="myImage" alt="Step Design Company" src="assets/logo.png"  width="100" height="45" />
+		<ul class="main-nav-list">
+				<li class="main-nav-items"><a href="index.html" class="nav-links nav-font">Home</a></li>
+				<li class="main-nav-items"><a href="conPageAboutUs.html" class="nav-links nav-font">About us</a></li>
+				<li class="main-nav-items"><a href="conPageProject.html" class="nav-links nav-font">Projects</a></li>
+				<li class="main-nav-items"><a href="conPageTestimonial.html" class="nav-links nav-font">Testimonial</a></li>
+				<li class="main-nav-items"><a href="conPageCareerOpportunities.html" class="nav-links nav-font">Join us</a></li>
+				<li class="main-nav-items"><a href="conPageContactUs.html" class="nav-links nav-font">Contact us</a></li>
+			</ul>
+		</div>
 		<input type="checkbox" class="checkbox" id="nav-toggle">
 				<label for="nav-toggle" class="nav-toggle-btn">
 					<span class="nav-icon-bar"></span>
@@ -113,6 +126,13 @@
 						<div class="residential" onclick="location.href='Residentials/conResidential_SengKang.html';">
 							<img src="assets/Residential/Sengkang/IMG_4111.JPG" alt="">
 							<div class="r-name">Sengkang xxx xxx xxx</div>
+						</div>
+					</div>
+
+					<div class="r-col">
+						<div class="residential" onclick="location.href='Residentials/conResidential_Buangkok.html';">
+							<img src="assets/Residential/Buangkok/IMG_3970.JPG" alt="">
+							<div class="r-name">Buangkok xxx xxx xxx</div>
 						</div>
 					</div>
 

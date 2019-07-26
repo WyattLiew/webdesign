@@ -15,24 +15,28 @@
 		}
 		html {
 		font-size: 10px;
-		font-family: 'Roboto',san-serif;
-		color: #eee;
+		/*font-family: 'Roboto',san-serif;*/
+		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		color: #222;
 
+		}
+		header {
+			background: url(assets/bg5.jpg) no-repeat center fixed; 
+    		background-size: cover;
 		}
 		body{
 		width: 100%;
-		height: 100%;
+		height: 100%;/*
 		background: url('assets/bg5.jpg') no-repeat center fixed;
-		background-size: cover;
-		background-attachment: fixed;
+		background-size: cover;*/
 		}
 
 		.navOpen{
 			display: none;
 		}
 
-		.purple {
-			color: #111;
+		.black {
+			color: rgb(51, 51, 51);
 		}
 
 		@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
@@ -58,12 +62,24 @@
 </head>
 <body>
 	<header>
-		<img id="myImage" alt="Step Design Company" src="assets/logo.png"  width="250" height="90" />
+		<div class="main-navbar">
+		<img id="myImage" alt="Step Design Company" src="assets/logo.png"  width="100" height="45" />
+		<ul class="main-nav-list">
+				<li class="main-nav-items"><a href="index.html" class="nav-links nav-font">Home</a></li>
+				<li class="main-nav-items"><a href="conPageAboutUs.html" class="nav-links nav-font">About us</a></li>
+				<li class="main-nav-items"><a href="conPageProject.html" class="nav-links nav-font">Projects</a></li>
+				<li class="main-nav-items"><a href="conPageTestimonial.html" class="nav-links nav-font">Testimonial</a></li>
+				<li class="main-nav-items"><a href="conPageCareerOpportunities.html" class="nav-links nav-font">Join us</a></li>
+				<li class="main-nav-items"><a href="conPageContactUs.html" class="nav-links nav-font">Contact us</a></li>
+			</ul>
+		</div>
+
 		<input type="checkbox" class="checkbox" id="nav-toggle">
 				<label for="nav-toggle" class="nav-toggle-btn">
 					<span class="nav-icon-bar"></span>
 				</label>
 				<div class="overlay"></div>
+
 		<nav class="main-nav navOpen" id="main-nav">
 			<ul class="nav-list">
 				<li class="nav-items"><a href="index.html" class="nav-links">Home</a></li>
@@ -101,17 +117,17 @@
 						<ul class="social-nav-list">
 							<li>
 								<a href="#" class="icon-link">
-									<i class="fab fa-facebook-square purple"></i>
+									<i class="fab fa-facebook-square black"></i>
 								</a>
 							</li>
-							<li>
+							<!-- <li>
 								<a href="#" class="icon-link">
 									<i class="fab fa-twitter-square purple"></i>
 								</a>
-							</li>
+							</li> -->
 							<li>
 								<a href="#" class="icon-link">
-									<i class="fab fa-instagram purple"></i>
+									<i class="fab fa-instagram black"></i>
 								</a>
 							</li>
 						</ul>
