@@ -349,7 +349,7 @@
 		color: #4267b2;
 	}
 
-	.fa-twitter-square:hover{
+	.fa-instagram:hover{
 		color: #4267b2;
 	}
 
@@ -1099,6 +1099,14 @@
 			color: #fff;
 		}
 
+		.back-icon-link {
+			position: fixed;
+		    top: 100px;
+		    left: 5rem;
+		    font-size: 5rem;
+		    color: #fff;
+		}
+
 		/** End residential css */
 
 		/** Start 3D box css here */
@@ -1206,6 +1214,11 @@
 		    color: #8f9296;
 		    font-size: 14px;
 		    margin: 0;
+		}
+
+		.footer-social-icon {
+			font-size: 2.5rem;
+   			color: #fdffff;
 		}
 
 
