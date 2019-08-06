@@ -1106,6 +1106,9 @@
 		    font-size: 5rem;
 		    color: #fff;
 		}
+		.back-icon-link:hover {
+		    color: rgba(255, 255, 255, 0.56);
+		}
 
 		/** End residential css */
 
@@ -1208,6 +1211,10 @@
 		    text-decoration: none;
 		    color: inherit;
 		    text-transform: uppercase;
+		}
+
+		.footer-basic-centered .footer-links a:hover {
+			color: #4267b2;
 		}
 
 		.footer-basic-centered .footer-company-name {
@@ -1366,6 +1373,11 @@
 	.projects-container .projects-box .projects-imgbox img {
     	width: 100%;
     	height: 250px;
+	}
+
+	.back-icon-link{
+		top: 80px;
+    	left: 2rem;
 	}
 
 	.residential-landing-text h1 {
